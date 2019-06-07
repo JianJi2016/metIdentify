@@ -1,0 +1,38 @@
+url: https://jaspershen.github.io/metIdentify/
+
+authors:
+  Xiaotao Shen:
+    href: http://shenxt.sxl.cn/
+
+template:
+  params:
+    docsearch:
+      api_key: fbd8d79ed49f21fc9ca7b2cf601a3f5b
+      index_name: jaspershen-mettools
+
+development:
+  mode: auto
+
+reference:
+  - title: Metabolite identification
+    desc: Metabolite identification based on MS1 and MS2 library.
+    contents:
+    - metIdentify
+
+  - title: Functions for metIdentifyClass
+    desc: Functions for metIdentifyClass
+    contents:
+    - filterIden
+    - getIdenInfo
+    - getIdentificationTable
+    - getMS2spectrum2Object
+    - getParams
+    - ms2plot
+    - readMSP
+    - whichHasIden
+    
+  - title: Database construction
+    desc: Construct in-house MS2 spectra
+    contents:
+    - getMS2spectrum
+
