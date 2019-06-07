@@ -19,8 +19,8 @@
 # fraction.weight = fraction.weight
 # dp.forward.weight = dp.forward.weight
 # dp.reverse.weight = dp.reverse.weight
-
 #---------------------------------------------------------------------------
+
 setGeneric(name = "metIdentification", 
            def = function(ms1.info, 
                           ms2.info, 

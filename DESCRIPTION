@@ -11,7 +11,7 @@ Authors@R: c(
 Maintainer: Xiaotao Shen<shenxt1990@163.com>
 Description: Metabolite identification using MS1 and MS2 spectra.
 LazyData: true
-Depends: R (>= 3.5)
+Depends: R (>= 3.4)
 Imports:
     BiocParallel,
     ggplot2,
