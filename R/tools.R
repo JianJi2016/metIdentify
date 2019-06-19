@@ -58,3 +58,27 @@ setGeneric(name = "SXTMTmatch",
                  "rt error")
              result <- result
            })
+
+
+
+getExtension <- function(file){
+  tail(stringr::str_split(string = file, pattern = "\\.")[[1]], 1)
+}
+
+
+readTable <- function(file){
+  extension <- getExtension(file = file)
+  if(extension == "csv"){
+    return(readr::read_csv(file = file))
+  }
+  
+  if(extension == 'xlsx'){
+    return(readxl::read_xlsx(path = file))
+  }
+  
+  if(extension == "xls"){
+    return(readxl::read_xls(path = file))
+  }
+
+}
+

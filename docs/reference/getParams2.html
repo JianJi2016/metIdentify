@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mseAnalysis — mseAnalysis • metTools</title>
+<title>getParams2 — getParams2 • metIdentify</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,11 +43,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="mseAnalysis — mseAnalysis" />
+<meta property="og:title" content="getParams2 — getParams2" />
 
-<meta property="og:description" content="Metabolite sets enrichment analysis." />
+<meta property="og:description" content="Get parameters from a mzIdentifyClass object." />
 
-<meta property="og:image" content="https://jaspershen.github.io/metTools/logo.png" />
+<meta property="og:image" content="https://jaspershen.github.io/metIdentify/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -77,7 +77,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">metTools</a>
+        <a class="navbar-link" href="../index.html">metIdentify</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
@@ -91,25 +91,10 @@
   </a>
 </li>
 <li>
-  <a href="../articles/metTools.html">Get started</a>
+  <a href="../articles/metIdentify.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/for_Liang.html">for_Liang</a>
-    </li>
-    <li>
-      <a href="../articles/piumet_for_liang.html">R Notebook</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -118,7 +103,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jaspershen/metTools">
+  <a href="https://github.com/jaspershen/metIdentify">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -141,49 +126,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>mseAnalysis</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metTools/blob/master/R/mseAnalysis.R'><code>R/mseAnalysis.R</code></a></small>
-    <div class="hidden name"><code>mseAnalysis.Rd</code></div>
+    <h1>getParams2</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metIdentify/blob/master/R/mzIdentify.R'><code>R/mzIdentify.R</code></a></small>
+    <div class="hidden name"><code>getParams2.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Metabolite sets enrichment analysis.</p>
+    <p>Get parameters from a mzIdentifyClass object.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mseAnalysis</span>(<span class='no'>metabolite.id</span>, <span class='kw'>species</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"hsa"</span>, <span class='st'>"dme"</span>, <span class='st'>"mmu"</span>, <span class='st'>"rat"</span>, <span class='st'>"bta"</span>,
-  <span class='st'>"gga"</span>, <span class='st'>"dre"</span>, <span class='st'>"cel"</span>, <span class='st'>"sce"</span>, <span class='st'>"ath"</span>, <span class='st'>"smm"</span>, <span class='st'>"pfa"</span>, <span class='st'>"tbr"</span>, <span class='st'>"eco"</span>, <span class='st'>"ppu"</span>,
-  <span class='st'>"syf"</span>, <span class='st'>"hmdb"</span>), <span class='kw'>test.method</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"hypergeometric"</span>, <span class='st'>"fisher"</span>))</pre>
+    <pre class="usage"><span class='fu'>getParams2</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>metabolite.id</th>
-      <td><p>The vector of metabolite IDs.</p></td>
-    </tr>
-    <tr>
-      <th>species</th>
-      <td><p>The species. "hsa" is Homo sapiens (human),
-"dme" is Drosophlia melanogaster (fruit fly),
-"mmu" is Mus musculus (mouse), "rat" is Rattus norvegicus (rat),
-"bta" is Bos taurus (cow), "gga" is Gallus domesticus (chicken),
-"dre" is Danio rerio (zebrafish), "cel" is Caenorharomyces elegans (nematode),
- "sce" is Saccharomyces cerevisaiae (yeast), "ath" is Arabidopsis thaliana (thale cress),
- "smm" is Schistosoma mansoni, "pfa" is Plasmodum falciparum 3D7,
- "tbr" is Trypanosoma brucei, "eco" is Escherichia coli K-12 MG1655,
-"ppu" is Pseudomonas putida KT2440, "syf" is Synechococcus elongatus.</p></td>
-    </tr>
-    <tr>
-      <th>test.method</th>
-      <td><p>Hypergeometric or fisher test.</p></td>
+      <th>object</th>
+      <td><p>A mzIdentifyClass object.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The MSE analysis result.</p>
+    <p>A data.frame contains all the parameters of this metIdentifiyClass object.</p>
     
 
   </div>
@@ -197,7 +164,7 @@
 
     <h2>Author</h2>
     <p>Xiaotao Shen
-<a href='mailto:shenxt@sioc.ac.cn'>shenxt@sioc.ac.cn</a></p>
+<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
   </div>
 </div>
 
@@ -219,7 +186,7 @@
     
     
     apiKey: 'fbd8d79ed49f21fc9ca7b2cf601a3f5b',
-    indexName: 'jaspershen-mettools',
+    indexName: 'jaspershen-metidentify',
     inputSelector: 'input#search-input.form-control',
     transformData: function(hits) {
       return hits.map(function (hit) {

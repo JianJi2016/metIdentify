@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metIdentify</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@
       <h1>metIdentify version0.1.1</h1>
                         <h4 class="author">Xiaotao Shen(<a href="mailto:shenxt1990@163.com" class="email">shenxt1990@163.com</a>, <a href="http://shenxt.sxl.cn/" class="uri">http://shenxt.sxl.cn/</a>)</h4>
             
-            <h4 class="date">2019-06-06</h4>
+            <h4 class="date">2019-06-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metIdentify/blob/master/vignettes/metIdentify.Rmd"><code>vignettes/metIdentify.Rmd</code></a></small>
       <div class="hidden name"><code>metIdentify.Rmd</code></div>
@@ -104,18 +104,6 @@
 </h2>
 <hr>
 <p><em>metIdentify</em> provides a comprehensive pipeline for data processing and statistical analysis of large-scale mass spectrometry (MS) based-metabolomics data.</p>
-</div>
-<div id="data-processing" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-processing" class="anchor"></a><strong>Data processing</strong>
-</h2>
-<hr>
-<p>Use <a href="https://bioconductor.org/packages/release/bioc/html/xcms.html">‘xcms’</a> for raw data processing for LC-MS-based metabolomics data.</p>
-<ul>
-<li>Prepare your raw LC-MS data.</li>
-</ul>
-<p>All the raw data should be converted to <code>mzXML</code> format using <a href="http://proteowizard.sourceforge.net/tools.shtml"><code>MSconvert</code></a>.</p>
-<p>Then all the mzXML data should be placed in different folders according to their groups.</p>
 <p>We use the demo data from another package <code>demData</code>. Please install it before begining.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="cf">if</span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(devtools)){</a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
@@ -159,18 +147,18 @@
 <p><code>result</code> is metIdentifyClass object.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">result</a></code></pre></div>
 <p>You can get processsing parameters from it.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">parameters &lt;-<span class="st"> </span><span class="kw">getParams</span>(<span class="dt">object =</span> result)</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getParams.html">getParams</a></span>(<span class="dt">object =</span> result)</a>
 <a class="sourceLine" id="cb4-2" title="2">parameters</a></code></pre></div>
 <p>You can also get the identification table from it.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">identification.table &lt;-<span class="st"> </span><span class="kw">getIdentificationTable</span>(<span class="dt">object =</span> result)</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">identification.table &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getIdentificationTable.html">getIdentificationTable</a></span>(<span class="dt">object =</span> result)</a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(identification.table)</a></code></pre></div>
 <p>Then you can get all or one MS2 match plot from it.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">peak.name &lt;-<span class="st"> </span><span class="kw">whichHasIden</span>(<span class="dt">object =</span> result, <span class="dt">dp.cutoff =</span> <span class="fl">0.9</span>)</a>
-<a class="sourceLine" id="cb6-2" title="2">ms2.plot &lt;-<span class="st"> </span><span class="kw">ms2plot</span>(<span class="dt">object =</span> result, <span class="dt">which.peak =</span> peak.name[<span class="dv">500</span>])</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">peak.name &lt;-<span class="st"> </span><span class="kw"><a href="../reference/whichHasIden.html">whichHasIden</a></span>(<span class="dt">object =</span> result, <span class="dt">dp.cutoff =</span> <span class="fl">0.9</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2">ms2.plot &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ms2plot.html">ms2plot</a></span>(<span class="dt">object =</span> result, <span class="dt">which.peak =</span> peak.name[<span class="dv">500</span>])</a>
 <a class="sourceLine" id="cb6-3" title="3">ms2.plot</a></code></pre></div>
 <p>You can also output all ms2 plot2 or some plot you want.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">peak.name &lt;-<span class="st"> </span><span class="kw">whichHasIden</span>(<span class="dt">object =</span> result, <span class="dt">dp.cutoff =</span> <span class="fl">0.9</span>)</a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="kw">ms2plot</span>(<span class="dt">object =</span> result,</a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">peak.name &lt;-<span class="st"> </span><span class="kw"><a href="../reference/whichHasIden.html">whichHasIden</a></span>(<span class="dt">object =</span> result, <span class="dt">dp.cutoff =</span> <span class="fl">0.9</span>)</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="../reference/ms2plot.html">ms2plot</a></span>(<span class="dt">object =</span> result,</a>
 <a class="sourceLine" id="cb7-3" title="3">        <span class="dt">path =</span> path,</a>
 <a class="sourceLine" id="cb7-4" title="4">        <span class="dt">direction =</span> <span class="st">"prefer.forward"</span>,</a>
 <a class="sourceLine" id="cb7-5" title="5">        <span class="dt">which.peak =</span> peak.name[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>],</a>
@@ -185,7 +173,6 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction"><strong>Introduction</strong></a></li>
-      <li><a href="#data-processing"><strong>Data processing</strong></a></li>
       <li><a href="#metabolite-identification"><strong>Metabolite identification</strong></a></li>
       </ul>
 </div>
@@ -210,7 +197,7 @@
     
     
     apiKey: 'fbd8d79ed49f21fc9ca7b2cf601a3f5b',
-    indexName: 'jaspershen-mettools',
+    indexName: 'jaspershen-metidentify',
     inputSelector: 'input#search-input.form-control',
     transformData: function(hits) {
       return hits.map(function (hit) {

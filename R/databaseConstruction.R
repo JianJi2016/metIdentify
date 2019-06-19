@@ -75,6 +75,7 @@
 
 databaseConstruction <- function(path = ".",
                                  version = "0.0.1",
+                                 metabolite.info.name = "metabolite.info.csv",
                                  source = "MS",
                                  link = "http://snyderlab.stanford.edu/",
                                  creater = "Xiaotao Shen",
@@ -83,7 +84,7 @@ databaseConstruction <- function(path = ".",
                                  mz.tol = 15,
                                  rt.tol = 30,
                                  threads = 3){
-  metabolite.info <- readr::read_csv(file.path(path, "metabolite.info.csv"))
+  metabolite.info <- readr::read_csv(file.path(path, metabolite.info.name))
   cat("Reading positive MS2 data...\n")
   file.pos <- dir(file.path(path, 'POS'), full.names = TRUE)
   ms2.data.pos <- readMZXML(file = file.pos, threads = threads)
@@ -142,7 +143,6 @@ databaseConstruction <- function(path = ".",
     return(temp.ms2.pos)
     }
     
-    
     unique.file.name <- unique(temp.match.result.pos$file)
   
     temp.ms2.pos <- lapply(unique.file.name, function(temp.name){
@@ -189,7 +189,6 @@ databaseConstruction <- function(path = ".",
       return(temp.ms2.neg)
     }
     
-    
     unique.file.name <- unique(temp.match.result.neg$file)
     
     temp.ms2.neg <- lapply(unique.file.name, function(temp.name){
@@ -203,8 +202,6 @@ databaseConstruction <- function(path = ".",
     names(temp.ms2.neg) <- stringr::str_extract(string = unique.file.name, 
                                                 pattern = "NCE[0-9]{1,3}")
     temp.ms2.neg
-    
-    
   })
   
   names(spectra.neg) <- metabolite.info$Lab.ID[unique.idx1]
@@ -213,7 +210,6 @@ databaseConstruction <- function(path = ".",
   Spectra <- list("Spectra.positive" = spectra.pos,
                   "Spectra.negative" = spectra.neg)
   
-  
   database.info <- list("Version" = version,
                         "Source" = source,
                         "Link" = link,
@@ -221,10 +217,8 @@ databaseConstruction <- function(path = ".",
                         "Email" = email,
                         "RT" = rt)
   
-  
   spectra.info <- as.data.frame(metabolite.info)
   rm(list = "metabolite.info")
-  
   
   msDatabase0.0.1 <- new(Class = "databaseClass", 
                            database.info = database.info,
@@ -272,18 +266,12 @@ databaseConstruction <- function(path = ".",
 #             overwrite = TRUE)
 # }
 
-
-
-
-
-
 ###S4 class for function metIdentification
 setClass(Class = "databaseClass", 
          representation(database.info = "list",
                         spectra.info = "data.frame",
                         spectra.data = "list")
 )
-
 
 setMethod(f = "show",
           signature = "databaseClass",
@@ -309,7 +297,6 @@ setMethod(f = "show",
           }
 )
 
-
 #' @title getMS2spectrum
 #' @description Get Ms2 spectra of peaks from metIdentifyClass.
 #' @author Xiaotao Shen
@@ -329,4 +316,51 @@ setGeneric(name = "getMS2spectrum",
              temp <- database@spectra.data[[pol]][[match(lab.id, names(database@spectra.data[[pol]]))]]
              temp[[match(ce, names(temp))]]
            })
+
+
+
+
+# ##
+# setwd("D:/study/database and library/inhouse/Metabolite database/HILIC")
+# load("msDatabase0.0.1")
+# met.info <- readr::read_csv("metabolite.info_HILIC.csv")
+# met.info.pos <- readr::read_csv("pHILIC_misMatrix.csv")
+# met.info.neg <- readr::read_csv("nHILIC_misMatrix.csv")
+# 
+# met.info.pos <- met.info.pos[which(!is.na(met.info.pos$RT_retrieval)),]
+# met.info.neg <- met.info.neg[which(!is.na(met.info.neg$RT_retrieval)),]
+# 
+# match(met.info.pos$Lab.ID, names(msDatabase0.0.1@spectra.data$Spectra.positive))
+# match(met.info.neg$Lab.ID, names(msDatabase0.0.1@spectra.data$Spectra.negative))
+# 
+# 
+# 
+# 
+# plot(abs(met.info.pos$RT - met.info.pos$RT_retrieval * 60))
+# plot(abs(met.info.neg$RT - met.info.neg$RT_retrieval * 60))
+# 
+# path <- "."
+# file.pos <- dir(file.path(path, 'POS'), full.names = TRUE)
+# ms2.data.pos <- readMZXML(file = file.pos, threads = 4)
+# 
+# ms1.info.pos <- lapply(ms2.data.pos, function(x){
+#   x[[1]]
+# })
+# ms1.info.pos <- do.call(rbind, ms1.info.pos)
+# ms1.info.pos$file <- basename(ms1.info.pos$file)
+# 
+# ms2.info.pos <- lapply(ms2.data.pos, function(x){
+#   x[[2]]
+# })
+# 
+# rm(list = "ms2.data.pos")
+# 
+# temp <- as.data.frame(met.info.pos[3,c("mz", "RT_retrieval")])
+# temp <- t(apply(temp, 1, as.numeric))
+# temp[1,2] <- temp[1,2] * 60
+# 
+# SXTMTmatch(data1 = temp, 
+#            data2 = ms1.info.pos[,c("mz", "rt")],
+#            mz.tol = 15, rt.tol = 100)
+
 

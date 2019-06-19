@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metIdentify</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -146,6 +146,10 @@
       <th>file</th>
       <td><p>The vector of names of ms2 files. MS2 file must be mzXML or mzML.</p></td>
     </tr>
+    <tr>
+      <th>threads</th>
+      <td><p>Thread number</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -186,7 +190,7 @@
     
     
     apiKey: 'fbd8d79ed49f21fc9ca7b2cf601a3f5b',
-    indexName: 'jaspershen-mettools',
+    indexName: 'jaspershen-metidentify',
     inputSelector: 'input#search-input.form-control',
     transformData: function(hits) {
       return hits.map(function (hit) {

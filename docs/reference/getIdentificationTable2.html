@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GetDotProduct — GetDotProduct • metTools</title>
+<title>getIdentificationTable2 — getIdentificationTable2 • metIdentify</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,11 +43,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="GetDotProduct — GetDotProduct" />
+<meta property="og:title" content="getIdentificationTable2 — getIdentificationTable2" />
 
-<meta property="og:description" content="GetDotProduct" />
+<meta property="og:description" content="Get identification table from a mzIdentifyClass object." />
 
-<meta property="og:image" content="https://jaspershen.github.io/metTools/logo.png" />
+<meta property="og:image" content="https://jaspershen.github.io/metIdentify/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -77,8 +77,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">metTools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="../index.html">metIdentify</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@
   </a>
 </li>
 <li>
-  <a href="../articles/metTools.html">Get started</a>
+  <a href="../articles/metIdentify.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -103,7 +103,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jaspershen/metTools">
+  <a href="https://github.com/jaspershen/metIdentify">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -126,31 +126,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>GetDotProduct</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metTools/blob/master/R/tools4MetaboliteIdentification.R'><code>R/tools4MetaboliteIdentification.R</code></a></small>
-    <div class="hidden name"><code>GetDotProduct.Rd</code></div>
+    <h1>getIdentificationTable2</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metIdentify/blob/master/R/mzIdentify.R'><code>R/mzIdentify.R</code></a></small>
+    <div class="hidden name"><code>getIdentificationTable2.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>GetDotProduct</p>
+    <p>Get identification table from a mzIdentifyClass object.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>GetDotProduct</span>(<span class='no'>x</span>, <span class='no'>y</span>)</pre>
+    <pre class="usage"><span class='fu'>getIdentificationTable2</span>(<span class='no'>object</span>, <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"old"</span>,
+  <span class='st'>"new"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>x</p></td>
+      <th>object</th>
+      <td><p>mzIdentifyClass object.</p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p>y</p></td>
+      <th>candidate.num</th>
+      <td><p>The number of candidates.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>The type of identification table.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A identification table (data.frame).</p>
     
 
   </div>
@@ -158,11 +167,13 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
     <h2>Author</h2>
-    <p>Hao Li, Yandong Yin, Kai Weng
-<a href='mailto:shenxt@sioc.ac.cn'>shenxt@sioc.ac.cn</a></p>
+    <p>Xiaotao Shen
+<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
   </div>
 </div>
 
@@ -184,7 +195,7 @@
     
     
     apiKey: 'fbd8d79ed49f21fc9ca7b2cf601a3f5b',
-    indexName: 'jaspershen-mettools',
+    indexName: 'jaspershen-metidentify',
     inputSelector: 'input#search-input.form-control',
     transformData: function(hits) {
       return hits.map(function (hit) {

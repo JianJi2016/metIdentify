@@ -297,6 +297,7 @@ setGeneric(name = "identifyPeak",
              match.idx <- data.frame(spectra.info[match(match.idx$Lab.ID, spectra.info$Lab.ID), 
                           c("Compound.name", "CAS.ID", "HMDB.ID", "KEGG.ID")], match.idx, 
                         stringsAsFactors = FALSE)
+             match.idx <- match.idx[order(match.idx$Total.score, decreasing = TRUE), , drop = FALSE]
              
              return(match.idx)
            })
