@@ -673,8 +673,6 @@ bestpoly <- function(x, y,
 
 
 
-
-
 bestloess <- function(x,
                       y,
                       span.begin = 0.5,

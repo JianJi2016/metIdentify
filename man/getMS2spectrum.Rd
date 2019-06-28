@@ -10,17 +10,17 @@ getMS2spectrum(lab.id, database, polarity = c("positive", "negative"),
 \arguments{
 \item{lab.id}{Lab ID.}
 
-\item{database}{Database.}
+\item{database}{Database (databaseClass object).}
 
 \item{polarity}{positive or negative.}
 
 \item{ce}{Collision value.}
 }
 \value{
-A metIdentifyClass object.
+A MS2 spectrum.
 }
 \description{
-Get Ms2 spectra of peaks from metIdentifyClass.
+Get Ms2 spectra of peaks from databaseClass.
 }
 \author{
 Xiaotao Shen

@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">metIdentify</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -92,19 +92,23 @@
 <div id="about" class="section level2">
 <h2 class="hasAnchor">
 <a href="#about" class="anchor"></a>About</h2>
-<p><code>metIdentify</code> is a R packge which can be used for comprehensive data processing, data analsyis and statistical analysis for untargeted metabolomics data.</p>
+<p><code>metIdentify</code> is a R packge which is used for metabolite identification based on in-house database and public database based on accurate mass, rentention time and/or MS2 spectra.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install <code>metIdentify</code> from <a href="https://github.com/jaspershen/metIdentify">Github</a>.</p>
-<pre><code><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports"># Install `metIdentify` from GitHub
-devtools::install_github("jaspershen/metIdentify")</a></code></pre>
+<pre><code># Install `metIdentify` from GitHub
+if(!require(devtools)){
+install.packages("devtools")
+}
+devtools::install_github("jaspershen/tinyTools")
+devtools::install_github("jaspershen/metIdentify")</code></pre>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>Please see the <code>Get started</code> page.</p>
+<p>Please see the <code>Get started</code> page to get the instruction of <code>metIdentify</code>.</p>
 </div>
 </div>
   </div>

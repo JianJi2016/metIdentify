@@ -82,6 +82,7 @@ setGeneric(name = "metIdentification",
              cat("\n")
              cat('Identifing metabolites with MS/MS database...\n')
              
+             
                identification.result <- BiocParallel::bplapply(1:nrow(ms1.info), 
                                                        FUN = identifyPeak, 
                                                        BPPARAM = BiocParallel::SnowParam(workers = threads,
@@ -254,14 +255,14 @@ setGeneric(name = "identifyPeak",
                dp <- dp[which.max(unlist(dp))]
                dp <- unlist(dp)
                data.frame("CE" = names(dp), 
-                          "SC" = dp, stringsAsFactors = FALSE)
+                          "SS" = dp, stringsAsFactors = FALSE)
              })
              
              ms2.score <- do.call(rbind, ms2.score)
              rownames(ms2.score) <- NULL
              
              match.idx <- data.frame(match.idx, ms2.score, stringsAsFactors = FALSE)
-             match.idx <- match.idx[which(match.idx$SC > ms2.match.tol), , drop = FALSE]
+             match.idx <- match.idx[which(match.idx$SS > ms2.match.tol), , drop = FALSE]
              rm(list = c("ms2.score"))
              if(nrow(match.idx) == 0) {
                return(NA)
@@ -271,11 +272,11 @@ setGeneric(name = "identifyPeak",
              total.score <- apply(match.idx, 1, function(x){
                if(is.na(x["RT.match.score"])){
                  as.numeric(x["mz.match.score"]) * (ms1.match.weight + rt.match.weight/2) +
-                   as.numeric(x['SC']) * (ms2.match.weight + rt.match.weight/2)
+                   as.numeric(x['SS']) * (ms2.match.weight + rt.match.weight/2)
                }else{
                 as.numeric(x['mz.match.score']) * ms1.match.weight + 
                    as.numeric(x['RT.match.score']) * rt.match.weight +
-                   as.numeric(x["SC"]) * ms2.match.weight
+                   as.numeric(x["SS"]) * ms2.match.weight
                }
              })
              
@@ -703,7 +704,7 @@ setGeneric(name = "plotMS2match",
                                    label = paste(temp.info, collapse = "\n"),
                                    hjust = 0, vjust = 1)
 
-             temp.info2 <- matched.info[c("mz.error", "RT.error", "SC", "Total.score", "Adduct", "CE")]
+             temp.info2 <- matched.info[c("mz.error", "RT.error", "SS", "Total.score", "Adduct", "CE")]
              temp.info2 <- temp.info2[!is.na(temp.info2)]
              
              temp.info2 <- paste(names(temp.info2), temp.info2, sep = ": ")

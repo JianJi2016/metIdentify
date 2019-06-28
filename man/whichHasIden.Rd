@@ -10,10 +10,10 @@ whichHasIden(object)
 \item{object}{A metIdentifyClass object.}
 }
 \value{
-Spectra names with identifications.
+Peak names with identifications.
 }
 \description{
-Get the spectra names with identifications.
+Get the peak names which have identifications.
 }
 \author{
 Xiaotao Shen

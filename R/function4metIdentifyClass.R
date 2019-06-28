@@ -280,7 +280,8 @@ setGeneric(name = "ms2plot",
                
                if(nrow(matched.info) > 1){
                  cat("There are", nrow(matched.info), "identifications.\n")
-                 cat(paste(paste(c(1:nrow(matched.info)), as.character(matched.info[,1]), sep = ":"), collapse = "\n"))
+                 cat(paste(paste(c(1:nrow(matched.info)), as.character(matched.info[,1]), sep = ":"), 
+                           collapse = "\n"))
                  cat("\n")
                  which.identification <- "test"
                  while(is.na(which.identification) | !which.identification %in% c(1:length(matched.info))){
@@ -348,7 +349,7 @@ setGeneric(name = "ms2plot",
                  ms2.spectra.name <- ms2.spectra.name[!is.na(anno.idx)]    
                  anno.idx <- anno.idx[!is.na(anno.idx)]
                }
-               cat("There are", length(anno.idx), "peaks with identifications.\n")
+               # cat("There are", length(anno.idx), "peaks with identifications.\n")
                
                if(length(anno.idx) == 0) {
                  return(NULL)
@@ -469,11 +470,11 @@ setGeneric(name = "ms2plot",
 
 #------------------------------------------------------------------------------
 #' @title whichHasIden
-#' @description Get the spectra names with identifications.
+#' @description Get the peak names which have identifications.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
-#' @return Spectra names with identifications.
+#' @return Peak names with identifications.
 #' @export
 setGeneric(name = "whichHasIden", 
            def = function(object){
@@ -518,7 +519,7 @@ setGeneric(name = "filterIden",
                RT.error <- x$RT.error
                RT.error[is.na(RT.error)] <- rt.match.tol - 1
                x <- x[which(x$mz.error < ms1.match.ppm & RT.error < rt.match.tol & 
-                              x$SC > ms2.match.tol & x$Total.score > total.score.tol),,drop = FALSE]
+                              x$SS > ms2.match.tol & x$Total.score > total.score.tol),,drop = FALSE]
              })
              
              temp.idx <- which(unlist(lapply(identification.result, function(x){
@@ -685,88 +686,6 @@ setGeneric(name = "filterIden",
 #'              identification.table
 #' 
 #'            })
-
-#' #------------------------------------------------------------------------------
-#' #' @title outputIdenTable
-#' #' @description Output identification table for each peak.
-#' #' @author Xiaotao Shen
-#' #' \email{shenxt1990@@163.com}
-#' #' @param ms1.data MS1 peak table, first 3 column must be name, mz and rt.
-#' #' @param identification.table Identification table from metIdentifyClass object.
-#' #' @param peak.alignment.mz.tol Peaks in ms1 data and MS2 spectra match mz tolerance.
-#' #' @return An identification table for each peak.
-#' #' @export
-#' setGeneric(name = "outputIdenTable", 
-#'            def = function(ms1.data,
-#'                           identification.table,
-#'                           peak.alignment.mz.tol = 25){
-#'              ms1.data <- as.data.frame(ms1.data)
-#'              identification.table <- as.data.frame(identification.table)
-#'              identification.table <- identification.table[which(identification.table$nhits.forward > 0 |
-#'                                                           identification.table$nhits.reverse > 0 ), , drop = FALSE]
-#'              
-#'              if(nrow(identification.table) == 0) {
-#'                stop("No identifications in identification.table. Please check it.\n")
-#'              }
-#'              
-#'              match.result <- SXTMTmatch(data1 = ms1.data[,c(2,3,1)], 
-#'                                         data2 = identification.table[,c(2,3)], 
-#'                                         mz.tol = peak.alignment.mz.tol, 
-#'                                         rt.error.type = "abs")
-#'              
-#'              if(is.null(match.result)){
-#'                stop("No peaks in ms1.data are matched with peaks in identification.table.\n")
-#'              }
-#'              
-#'              peak.table.with.identification <- lapply(c(1:nrow(ms1.data)), function(idx){
-#'                temp.idx <- which(match.result[,1] == idx)
-#'                if(length(temp.idx) == 0) {
-#'                  temp <- as.data.frame(matrix(rep(NA, 9), nrow = 1))
-#'                  colnames(temp) <- c("matcthed.spectra", "from.which.spectrum", "ms2.spectrm.name",
-#'                                      "precursor.mz", "precursor.rt", "nhits.forward", "hits.forward", 
-#'                                      "nhits.reverse",
-#'                                      "hits.reverse" )
-#'                  return(temp)
-#'                }
-#'                
-#'                temp.identification <- identification.table[match.result[temp.idx,2],, drop = FALSE]
-#'                temp.identification.spectra.name <- temp.identification[,1]
-#'                temp.identification.hits.forward <- temp.identification$hits.forward
-#'                temp.identification.hits.reverse <- temp.identification$hits.reverse
-#'                if(any(temp.identification.hits.forward != "")){
-#'                  temp.identification.forward.score <- stringr::str_extract(string = temp.identification.hits.forward, 
-#'                                                                        pattern = "score\\{[0-1]{1}\\.?[0-9]*")
-#'                  temp.identification.forward.score <- as.numeric(stringr::str_replace(string = temp.identification.forward.score,
-#'                                                                                   pattern = "score\\{", replacement = ""))        
-#'                  anno.idx <- which.max(temp.identification.forward.score)
-#'                }else{
-#'                  temp.identification.reverse.score <- stringr::str_extract(string = temp.identification.hits.reverse, 
-#'                                                                        pattern = "score\\{[0-1]{1}\\.?[0-9]*")
-#'                  temp.identification.reverse.score <- as.numeric(stringr::str_replace(string = temp.identification.reverse.score,
-#'                                                                                   pattern = "score\\{", replacement = ""))        
-#'                  anno.idx <- which.max(temp.identification.reverse.score)    
-#'                }
-#'                
-#'                from.which.spectrum <- temp.identification.spectra.name[anno.idx]
-#'                
-#'                return.result <- temp.identification[anno.idx, , drop = FALSE]
-#'                return.result <- data.frame("matcthed.spectra" = stringr::str_c(temp.identification.spectra.name, collapse = ";"),
-#'                                            from.which.spectrum,
-#'                                            return.result, 
-#'                                            stringsAsFactors = FALSE)
-#'                colnames(return.result)[c(3:5)] <- c("ms2.spectrm.name", "precursor.mz", "precursor.rt")
-#'                return.result
-#'              })
-#'              
-#'              peak.table.with.identification <- do.call(rbind, peak.table.with.identification)
-#'              
-#'              peak.table.with.identification <- data.frame(ms1.data,peak.table.with.identification, stringsAsFactors = FALSE)
-#'              peak.table.with.identification
-#'              # write.csv(peak.table.with.identification, 
-#'              #           file.path(path, "peak.table.with.identification.csv"), row.names = FALSE)
-#'            })
-
-
 
 #------------------------------------------------------------------------------
 #' @title getMS2spectrum2Object

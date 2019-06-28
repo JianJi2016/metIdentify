@@ -1,26 +1,28 @@
+
 ##------------------------------------------------------------------------------
 #' @title getIdentificationTable
 #' @description Get identification table from a metIdentifyClass object.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param ... One or multiple metIdentifyClass objects.
-#' @param candidate.num The number of camdidates.
+#' @param candidate.num The number of candidates.
 #' @param type The stype of identification table.
 #' @return A identification table (data.frame).
 #' @export
-setGeneric(name = "getIdentificationTable", 
+setGeneric(name = "getIdentificationTable1", 
            def = function(...,
                           candidate.num = 3,
                           type = c("old", "new")
            ){
+             candidate.num <- round(candidate.num)
+             if(candidate.num <= 0) candidate.num <- 1
              
              object <- list(...)
              if (any(unique(unlist(lapply(object, class))) != "metIdentifyClass")) {
                stop("Only for metIdentifyClass\n")
              }
-            
-             type <- match.arg(type)
              
+             type <- match.arg(type)
              ##if object number is 1
              if(length(object) == 1){
                object <- object[[1]]
@@ -31,6 +33,9 @@ setGeneric(name = "getIdentificationTable",
                }
                ##add database information
                identification.result <- lapply(identification.result, function(x){
+                 if(nrow(x) > candidate.num){
+                   x <- x[1:candidate.num,,drop = FALSE]
+                 }
                  data.frame(x, "Database" = object@database, stringsAsFactors = FALSE)
                })
                
@@ -69,7 +74,7 @@ setGeneric(name = "getIdentificationTable",
                      colnames(temp) <- c(names(x), c("Compound.name", "CAS.ID", "HMDB.ID",
                                                      "KEGG.ID", "Lab.ID", "Adduct", "mz.error", "mz.match.score",
                                                      "RT.error", "RT.match.score",
-                                                     "CE", "SC", "Total.score", "Database"))
+                                                     "CE", "SS", "Total.score", "Database"))
                      list(temp)
                    }else{
                      temp <- as.data.frame(matrix(rep(x, nrow(y)), nrow = nrow(y), byrow = TRUE), 
@@ -84,6 +89,7 @@ setGeneric(name = "getIdentificationTable",
                  },
                  x = peak.table,
                  y = identification.table)
+                 
                  identification.table <- as.data.frame(do.call(rbind, identification.table))
                }
                rownames(identification.table) <- NULL
@@ -97,6 +103,9 @@ setGeneric(name = "getIdentificationTable",
                  lapply(object, function(x) {
                    iden.result <- x@identification.result
                    iden.result <- mapply(function(x, y){
+                     if(nrow(x) > candidate.num){
+                       x <- x[1:candidate.num,,drop = FALSE]
+                     }
                      x <- data.frame(x, "MS2.spectra.name" = y, 
                                      stringsAsFactors = FALSE)
                      list(x)
@@ -116,8 +125,8 @@ setGeneric(name = "getIdentificationTable",
                  })
                
                identification.result <- mapply(function(x, y, z){
-               list(data.frame(x, "Database" = y, "Datasert.index" = z,
-                               stringsAsFactors = FALSE))
+                 list(data.frame(x, "Database" = y, "Dataset.index" = z,
+                                 stringsAsFactors = FALSE))
                },
                x = identification.result,
                y = database.name,
@@ -125,50 +134,45 @@ setGeneric(name = "getIdentificationTable",
                
                identification.result <- do.call(rbind, identification.result)
                identification.result <- as.data.frame(identification.result)
-                  
+               
                identification.result <- plyr::dlply(.data = identification.result, 
-                           .variables = .(Peak.name), 
-                           .fun = function(x){
-                             x <- x[order(x$SC,decreasing = TRUE),,drop = FALSE]
-                             if(nrow(x) > candidate.num){x <- x[1:candidate.num,,drop = FALSE]}
-                             x
-                           })
-             
+                                                    .variables = plyr::.(Peak.name), 
+                                                    .fun = function(x){
+                                                      x <- x[order(x$SS,decreasing = TRUE),,drop = FALSE]
+                                                      if(nrow(x) > candidate.num){x <- x[1:candidate.num,,drop = FALSE]}
+                                                      x
+                                                    })
+               
                # if(type == "old"){
-                 identification.table <- as.data.frame(matrix(nrow = nrow(peak.table), ncol = 3))
-                 colnames(identification.table) <- c("MS2.spectrum.name","Candidate.number", "Identification")
-                 # identification.table[match.result[,1],1] <- object@ms1.info$name[match.result[,2]]
-                 item <- colnames(identification.result[[1]])[-1]
-                 identification.result <- lapply(identification.result, function(x){
-                   paste(apply(x[,-1], 1, function(y){
-                     paste(paste(item, as.character(y), sep = ":"), collapse = ";")
-                   }), collapse = "{}")
-                 })
-                 
-                 identification.table$Identification[match(names(identification.result), peak.table$name)] <- 
-                   unlist(identification.result)
-                 
-                 identification.table$Candidate.number <- sapply(identification.table$Identification, function(x){
-                   if(is.na(x)) return(0)
-                   return(length(stringr::str_split(string = x, pattern = "\\{\\}")[[1]]))
-                 })
-                 
-                 identification.table$MS2.spectrum.name <- unlist(lapply(identification.table$Identification, function(x){
-                   if(is.na(x)) return(NA)
-                   temp.name <- stringr::str_extract_all(string = x, pattern = "MS2.spectra.name:mz[0-9\\.\\-\\_]{1,30}rt[0-9\\.\\-\\_]{1,30}")[[1]]
-                   temp.name <- stringr::str_replace_all(string = temp.name, pattern = "MS2.spectra.name:", replacement = "")
-                   paste(temp.name, collapse = ";")
-                 }))
-                 
-                 identification.table <- data.frame(peak.table, identification.table, stringsAsFactors = FALSE)
+               identification.table <- as.data.frame(matrix(nrow = nrow(peak.table), ncol = 3))
+               colnames(identification.table) <- c("MS2.spectrum.name","Candidate.number", "Identification")
+               # identification.table[match.result[,1],1] <- object@ms1.info$name[match.result[,2]]
+               item <- colnames(identification.result[[1]])[-1]
+               identification.result <- lapply(identification.result, function(x){
+                 paste(apply(x[,-1], 1, function(y){
+                   paste(paste(item, as.character(y), sep = ":"), collapse = ";")
+                 }), collapse = "{}")
+               })
+               
+               identification.table$Identification[match(names(identification.result), peak.table$name)] <- 
+                 unlist(identification.result)
+               
+               identification.table$Candidate.number <- sapply(identification.table$Identification, function(x){
+                 if(is.na(x)) return(0)
+                 return(length(stringr::str_split(string = x, pattern = "\\{\\}")[[1]]))
+               })
+               
+               identification.table$MS2.spectrum.name <- unlist(lapply(identification.table$Identification, function(x){
+                 if(is.na(x)) return(NA)
+                 temp.name <- stringr::str_extract_all(string = x, pattern = "MS2.spectra.name:mz[0-9\\.\\-\\_]{1,30}rt[0-9\\.\\-\\_]{1,30}")[[1]]
+                 temp.name <- stringr::str_replace_all(string = temp.name, pattern = "MS2.spectra.name:", replacement = "")
+                 paste(temp.name, collapse = ";")
+               }))
+               
+               identification.table <- data.frame(peak.table, identification.table, stringsAsFactors = FALSE)
                # }else{
                #   
                # }
-                 return(identification.table)
+               return(identification.table)
              }
-             
-             
-             
-             
-             
            })

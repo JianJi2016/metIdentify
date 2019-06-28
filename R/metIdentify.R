@@ -57,7 +57,7 @@
              if(missing(database)){
                stop("No database is provided.\n")
              }
-             
+
              ##parameter specification
              polarity <- match.arg(polarity)
              column <- match.arg(column)
@@ -148,7 +148,7 @@
                temp.ms2.type <- temp.ms2.type[length(temp.ms2.type)]
                
                if(temp.ms2.type %in% c("mzXML", "mzML")){
-                 ms2.data <- readMZXML(file = ms2.data.name, threads = threads)
+                 ms2.data <- readMZXML(file = file.path(path, ms2.data.name), threads = threads)
                }else{
                  ms2.data <- lapply(ms2.data.name, function(temp.ms2.data){
                    temp.ms2.type <- stringr::str_split(string = temp.ms2.data, 
@@ -156,9 +156,9 @@
                    temp.ms2.type <- temp.ms2.type[length(temp.ms2.type)]
                    if(!temp.ms2.type %in% c("mgf", "msp")) stop("We only support mgf or msp.\n")
                    if(temp.ms2.type == "msp"){
-                     temp.ms2.data <- readMSP(file = temp.ms2.data)
+                     temp.ms2.data <- readMSP(file = file.path(path, temp.ms2.data))
                    }else{
-                     temp.ms2.data <- readMGF(file = temp.ms2.data)
+                     temp.ms2.data <- readMGF(file = file.path(path, temp.ms2.data))
                    }
                    temp.ms2.data
                  })
@@ -217,7 +217,7 @@
              
              if(!missing(ms1.data)){
                cat("Matching peak table with MS2 spectrum...\n")
-               ms1.data <- readr::read_csv(file = ms1.data, 
+               ms1.data <- readr::read_csv(file = file.path(path, ms1.data), 
                                            col_types = readr::cols())
                colnames(ms1.data)[1:3] <- c("name", "mz", "rt")
                match.result <- SXTMTmatch(data1 = ms1.data[,c(2,3)], 
@@ -324,15 +324,15 @@
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.1.2 (20190618)
+Version 0.1.3 (20190620)
 --------------
-o Big improvement.")
+o A bug fix.")
 }
 
 packageStartupMessage("metIdentify,
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.1.2 (20190618)
+Version 0.1.3 (20190620)
 --------------
-o Big improvement.")
+o A bug fix.")

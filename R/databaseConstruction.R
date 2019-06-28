@@ -72,7 +72,24 @@
 # write.csv(metabolite.info.rplc, "metabolite.info.rplc.csv", row.names = FALSE)
 
 # databaseConstruction(path = ".")
-
+##------------------------------------------------------------------------------
+#' @title databaseConstruction
+#' @description Construct MS2 spectra database according to mzXML data and compound information table..
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param path Work directory.
+#' @param version The version of you database. Default is 0.0.1.
+#' @param metabolite.info.name The metabolite information table name, it must be csv format.
+#' @param source The source of your database.
+#' @param link Website link of the source.
+#' @param creater Creater name.
+#' @param email email address.
+#' @param rt Do the metabolites have RT information or not?.
+#' @param mz.tol m/z tolerance for the match between metabolites and precursor m/z of MS2 spectra.
+#' @param rt.tol RT tolerance for the match between metabolites and precursor m/z of MS2 spectra.
+#' @param threads The number of threads
+#' @return A databaseClass object.
+#' @export 
 databaseConstruction <- function(path = ".",
                                  version = "0.0.1",
                                  metabolite.info.name = "metabolite.info.csv",
@@ -225,7 +242,8 @@ databaseConstruction <- function(path = ".",
                            spectra.info = spectra.info,
                            spectra.data = Spectra)
   
-  save(msDatabase0.0.1, file = 'msDatabase0.0.1', compress = "xz")
+  # save(msDatabase0.0.1, file = file.path(path, 'msDatabase0.0.1'), compress = "xz")
+  return(msDatabase0.0.1)
 }
 
 # 
@@ -298,14 +316,14 @@ setMethod(f = "show",
 )
 
 #' @title getMS2spectrum
-#' @description Get Ms2 spectra of peaks from metIdentifyClass.
+#' @description Get Ms2 spectra of peaks from databaseClass.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param lab.id Lab ID.
-#' @param database Database.
+#' @param database Database (databaseClass object).
 #' @param polarity positive or negative.
 #' @param ce Collision value.
-#' @return A metIdentifyClass object.
+#' @return A MS2 spectrum.
 #' @export
 setGeneric(name = "getMS2spectrum", 
            def = function(lab.id,
@@ -316,51 +334,5 @@ setGeneric(name = "getMS2spectrum",
              temp <- database@spectra.data[[pol]][[match(lab.id, names(database@spectra.data[[pol]]))]]
              temp[[match(ce, names(temp))]]
            })
-
-
-
-
-# ##
-# setwd("D:/study/database and library/inhouse/Metabolite database/HILIC")
-# load("msDatabase0.0.1")
-# met.info <- readr::read_csv("metabolite.info_HILIC.csv")
-# met.info.pos <- readr::read_csv("pHILIC_misMatrix.csv")
-# met.info.neg <- readr::read_csv("nHILIC_misMatrix.csv")
-# 
-# met.info.pos <- met.info.pos[which(!is.na(met.info.pos$RT_retrieval)),]
-# met.info.neg <- met.info.neg[which(!is.na(met.info.neg$RT_retrieval)),]
-# 
-# match(met.info.pos$Lab.ID, names(msDatabase0.0.1@spectra.data$Spectra.positive))
-# match(met.info.neg$Lab.ID, names(msDatabase0.0.1@spectra.data$Spectra.negative))
-# 
-# 
-# 
-# 
-# plot(abs(met.info.pos$RT - met.info.pos$RT_retrieval * 60))
-# plot(abs(met.info.neg$RT - met.info.neg$RT_retrieval * 60))
-# 
-# path <- "."
-# file.pos <- dir(file.path(path, 'POS'), full.names = TRUE)
-# ms2.data.pos <- readMZXML(file = file.pos, threads = 4)
-# 
-# ms1.info.pos <- lapply(ms2.data.pos, function(x){
-#   x[[1]]
-# })
-# ms1.info.pos <- do.call(rbind, ms1.info.pos)
-# ms1.info.pos$file <- basename(ms1.info.pos$file)
-# 
-# ms2.info.pos <- lapply(ms2.data.pos, function(x){
-#   x[[2]]
-# })
-# 
-# rm(list = "ms2.data.pos")
-# 
-# temp <- as.data.frame(met.info.pos[3,c("mz", "RT_retrieval")])
-# temp <- t(apply(temp, 1, as.numeric))
-# temp[1,2] <- temp[1,2] * 60
-# 
-# SXTMTmatch(data1 = temp, 
-#            data2 = ms1.info.pos[,c("mz", "rt")],
-#            mz.tol = 15, rt.tol = 100)
 
 

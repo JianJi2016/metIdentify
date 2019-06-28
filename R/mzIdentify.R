@@ -79,10 +79,9 @@ setGeneric(name = "mzIdentify",
              }
              
              
-               ms1.data <- readr::read_csv(file = ms1.data, 
+               ms1.data <- readr::read_csv(file = file.path(path, ms1.data), 
                                            col_types = readr::cols())
                colnames(ms1.data)[1:3] <- c("name", "mz", "rt")
-               
                temp.fun <- function(idx, 
                                     ms1.data, 
                                     ms1.match.ppm = 25, 
@@ -304,6 +303,9 @@ setGeneric(name = "getIdentificationTable2",
                }
                ##add database information
                identification.result <- lapply(identification.result, function(x){
+                 if(nrow(x) > candidate.num){
+                   x <- x[1:candidate.num,,drop = FALSE]
+                 }
                  data.frame(x, "Database" = object@database, stringsAsFactors = FALSE)
                })
                

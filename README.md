@@ -5,7 +5,7 @@
 
 ## About
 
-`metIdentify` is a R packge which can be used for comprehensive data processing, data analsyis and statistical analysis for untargeted metabolomics data.
+`metIdentify` is a R packge which is used for metabolite identification based on in-house database and public database based on accurate mass, rentention time and/or MS2 spectra.
 
 ## Installation
 
@@ -13,9 +13,14 @@ You can install `metIdentify` from [Github](https://github.com/jaspershen/metIde
 
 ```
 # Install `metIdentify` from GitHub
+if(!require(devtools)){
+install.packages("devtools")
+}
+devtools::install_github("jaspershen/tinyTools")
 devtools::install_github("jaspershen/metIdentify")
 ```
 ## Usage
 
-Please see the `Get started` page.
+
+Please see the `Get started` page to get the instruction of `metIdentify`.
 

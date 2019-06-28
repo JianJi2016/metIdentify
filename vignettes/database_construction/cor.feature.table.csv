@@ -1,0 +1,173 @@
+"Lab.ID","Compound.name","RT"
+"RPLC_1","Pyrrole-3-carboxylic acid",42
+"RPLC_2","3-Furoic acid",60
+"RPLC_3","3,4-Dehydro-DL-proline",30
+"RPLC_4","1-Methylhydantoin",30
+"RPLC_5","5-Methylcytosine hydrochloride",30
+"RPLC_6","5-Aminoimidazole-4-carboxamide hydrochloride",30
+"RPLC_7","2-Pyrrolidinone-5-carboxylic acid",33
+"RPLC_8","Nicotinamide-N-Oxide",33
+"RPLC_9","2-(4-Hydroxyphenyl)ethanol (Tyrosol)",95.4
+"RPLC_10","5-(Hydroxymethyl)uracil",73.2
+"RPLC_11","7-Methyladenine",48
+"RPLC_12","1-Methylhypoxanthine",73.2
+"RPLC_13","4,6-Diamino-5-(formylamino)pyrimidine (FAPy-Adenine)",33
+"RPLC_14","4-Deoxypyridoxine",33
+"RPLC_15","2,3-Dihydroxybenzoic acid",78.6
+"RPLC_16","5-Hydroxymethyl-6-methyluracil",33
+"RPLC_17","1-Methylguanine",58.2
+"RPLC_18","7-Methylxanthine",574.8
+"RPLC_19","3-(2,5-dioxoimidazolidin-4-yl)propanoic acid (Hydantoin-5-propionic acid)",33
+"RPLC_20","3-Indoleacetic acid",217.2
+"RPLC_21","(-)-Cotinine",170.4
+"RPLC_22","(+/-)-Salsolinol Hydrochloride",33
+"RPLC_23","4-Pyridoxic acid",54.6
+"RPLC_24","3-Indoleacrylic acid",321.6
+"RPLC_25","5-Hydroxyindole-3-acetic acid",111.6
+"RPLC_26","3-Indolebutyric acid",336.6
+"RPLC_27","5-Acetylamino-6-amino-3-methyluracil Hydrate",170.4
+"RPLC_28","2'-Deoxycytidine",33
+"RPLC_29","2'-Deoxyuridine",43.2
+"RPLC_30","2'-Deoxyinosine",66
+"RPLC_31","5-Methylcytidine",33
+"RPLC_32","3-O-Methyluridine",52.8
+"RPLC_33","D-Fructose 6-phosphate trisodium salt hydrate",33
+"RPLC_34","8-Hydroxy-2'-deoxyguanosine",111.6
+"RPLC_35","5,7,3,4'-Tetrahydroxyflavanone (Eriodictyol)",346.2
+"RPLC_36","(-)Epicatechin",212.4
+"RPLC_37","13-OxoODE",581.4
+"RPLC_38","5'-Deoxy-5'-(methylthio)adenosine",249
+"RPLC_39","7-Methylguanosine",33
+"RPLC_40","AMP (Adenosine 3'-Monophosphate Hydrate)",71.4
+"RPLC_41","N,N-Dimethylguanidine sulfate",33
+"RPLC_42","L-Serine",33
+"RPLC_43","Levulinic acid",39.6
+"RPLC_44","cis-L-3-hydroxyproline",34.8
+"RPLC_45","L-Ornithine hydrochloride",33
+"RPLC_46","L-Aspartic acid",33
+"RPLC_47","N-methylnicotinamide",103.8
+"RPLC_48","N-Formyl-L-proline",39.6
+"RPLC_49","L-Glutamine",33
+"RPLC_50","N-Acetyl-DL-serine",33
+"RPLC_51","N-Acetyl-L-proline",60
+"RPLC_52","L-Dihydroorotic acid",33
+"RPLC_53","N-Acetyl-D-Valine",76.8
+"RPLC_54","L(-)-Carnitine",33
+"RPLC_55","N-Acetyl-D-cysteine",33
+"RPLC_56","N-alpha-acetyl-L-ornithine",33
+"RPLC_57","L(+)-Arginine hydrochloride",33
+"RPLC_58","N-epsilon-Dimethyl-L-lysine hydrochloride",33
+"RPLC_59","N-alpha-Acetyl-L-glutamine",33
+"RPLC_60","N-epsilon-acetyl-L-lysine",33
+"RPLC_61","N-epsilon-Triimethyl-L-lysine hydrochloride",33
+"RPLC_62","L-Tryptophanol",36.6
+"RPLC_63","N-Phenylacetylglycine",146.4
+"RPLC_64","O-Hydroxyhippuric acid",181.2
+"RPLC_65","L-Tryptophanamide hydrochloride",33
+"RPLC_66","Mannoheptulopyranose (Mannoheptulose)",275.4
+"RPLC_67","N-Acetyl-D-glucosamine",34.8
+"RPLC_68","L-Carnosine",33
+"RPLC_69","Resveratrol",325.8
+"RPLC_70","5-Methyluridine",49.8
+"RPLC_71","8-Hydroxyadenosine",110.4
+"RPLC_72","AMP (Adenosine 5'-monophosphate disodium salt)",43.2
+"RPLC_73","NADH (?-Nicotinamide adenine dinucleotide, reduced dipotassium salt)",181.8
+"RPLC_74","DL-Homocysteine thiolactone hydrochloride",34.8
+"RPLC_75","L-2,4-Diaminobutyric acid dihydrochloride",33
+"RPLC_76","Isethionic acid sodium salt",33
+"RPLC_77","Dihydrothymine",38.4
+"RPLC_78","Glutaconic acid",39.6
+"RPLC_79","Deamino-Histidine",34.8
+"RPLC_80","Ectoine ((S)-2-Methyl-1,4,5,6-tetrahydropyrimidine-4-carboxylic acid)",33
+"RPLC_81","Gamma-Guanidinobutyric acid",33
+"RPLC_82","D(+)-Ribonic acid-?-lactone",33
+"RPLC_83","Indole-2-carboxylic acid",269.4
+"RPLC_84","Iberin (3-Methylsulfinylpropyl isothiocyanate)",158.4
+"RPLC_85","Dihydroxyacetone phosphate dilithium salt",36.6
+"RPLC_86","Gabapentin",53.4
+"RPLC_87","Hexanoylglycine",217.8
+"RPLC_88","Dehydroascorbic acid",33
+"RPLC_89","D(-)Mannitol",33
+"RPLC_90","Indole-3-propionic acid",291
+"RPLC_91","DL-5-Hydroxytryptopan",34.8
+"RPLC_92","Flavone",490.8
+"RPLC_93","Inosine",48
+"RPLC_94","Glycitein (7,4'-Dihydroxy-6-methoxyisoflavone)",397.2
+"RPLC_95","Hydroxy Tolbutamide",311.4
+"RPLC_96","Eicosapentanoic acid",615
+"RPLC_97","dCTP (2'-Deoxycytidine 5'-triphosphate disodium salt)",269.4
+"RPLC_98","Pyruvatoxime",33
+"RPLC_99","Pyrrole-2-carboxylic acid",51.6
+"RPLC_100","Succinic Acid",33
+"RPLC_101","Niacinamide",55.2
+"RPLC_102","Nicotinic acid",33
+"RPLC_103","Urocanic acid",33
+"RPLC_104","Trans-Cinnamic acid",310.8
+"RPLC_105","Nw-Acetylhistamine",33
+"RPLC_106","p-Coumaric acid",237
+"RPLC_107","Pyridoxal hydrochloride",60
+"RPLC_108","Norharmane",190.2
+"RPLC_109","Pyridoxine hydrochloride",33
+"RPLC_110","N?-Acetyl-L-asparagine",33
+"RPLC_111","O-Phospho-L-Threonine",33
+"RPLC_112","N?-Acetyl-arginine",33
+"RPLC_113","Salsolinol 1-carboxylic acid",33
+"RPLC_114","Pyridoxal 5'-phosphate monohydrate",43.2
+"RPLC_115","Pyridoxamine-5'-phosphate",33
+"RPLC_116","Oleamide",631.8
+"RPLC_117","Orotidine",33
+"RPLC_118","Quercitin dihydrate",393.6
+"RPLC_119","Phytosphingosine",485.4
+"RPLC_120","TMP (Thymidine 5'-monophosphate disodium salt hydrate)",49.8
+"RPLC_121","NMN (?-Nicotinamide mononucleotide)",33
+"RPLC_122","Nicotinic acid mononucleotide",33
+"RPLC_123","S-Nitroso-L-Glutathione",33
+"RPLC_124","Ursodeoxycholic acid",543.6
+"RPLC_125","Acrylamide",33
+"RPLC_126","Cis-Urocanic acid",33
+"RPLC_127","Allantoic acid (Diureidoacetic acid)",33
+"RPLC_128","Citric acid",36
+"RPLC_129","D-Pantothenic acid Calcium salt",320.4
+"RPLC_130","Cyclo(-His-Pro)",33
+"RPLC_131","Coenzyme Q1 (Ubiquinone)",486
+"RPLC_132","Arbutin",36
+"RPLC_133","Biochanin A (5,7-Dihydroxy-4'-methoxyisoflavone)",472.8
+"RPLC_134","Cinnabarinic acid (Cinnavalinic acid)",378.6
+"RPLC_135","All-trans 4-Keto Retinoic acid",576.6
+"RPLC_136","cAMP (Adenosine 3',5'-cyclic monophosphate)",119.4
+"RPLC_137","Carnosic acid (from Rosmarinus officinalis)",555
+"RPLC_138","cGMP (Guanosine 3',5'-cyclic monophosphate sodium salt)",75.6
+"RPLC_139","d-ribo Phytosphingosine 1-Phosphate",555
+"RPLC_140","CTP (Cytidine-5'-triphosphate disodium salt dihydrate)",75.6
+"RPLC_141","L-Threonine allo free",33
+"RPLC_142","L-Hydroxyproline",33
+"RPLC_143","L-Asparagine monohydrate",33
+"RPLC_144","L-(+)-Lysine Monohydrate",33
+"RPLC_145","L-Glutamic acid 5-methyl ester",33
+"RPLC_146","DL-o-Tyrosine",33
+"RPLC_147","L-Tyrosine",33
+"RPLC_148","N-alpha-acetyl-L-lysine",33
+"RPLC_149","N-Acetyl-L-Tyrosine",127.8
+"RPLC_150","Galactinol",34.8
+"RPLC_151","Vitamin K1",679.2
+"RPLC_152","1,2,3,4-Tetrahydro-6,7-isoquinolinediol hydrobromide",33
+"RPLC_153","(+)-Catechin hydrate",174.6
+"RPLC_154","1-Methyladenine",119.4
+"RPLC_155","N6-Methyladenine",119.4
+"RPLC_156","Xanthine",45
+"RPLC_157","7-methylguanine",73.8
+"RPLC_158","8-Hydroxy-2'-deoxyguanosine",127.8
+"RPLC_159","dGDP (2'-Deoxyguanosine-5'-monophosphate, Sodium salt hydrate)",55.2
+"RPLC_160","?-Aminobutyric acid",33
+"RPLC_161","4-Imidazoleacetic acid hydrochloride",33
+"RPLC_162","L-Pyroglutamic acid",33
+"RPLC_163","Dimethylmalonic acid",39.6
+"RPLC_164","1-Methyl-4-imidazoleacetic acid",33
+"RPLC_165","4-Guanidinobutyric acid",33
+"RPLC_166","?-Ketoglutaric acid",33
+"RPLC_167","2-Oxoglutaric acid",33
+"RPLC_168","L-2-Aminoadipic acid",33
+"RPLC_169","4-Pyridoxic acid",61.8
+"RPLC_170","2-Methylhippuric acid",149.4
+"RPLC_171","L-Alanylglycine",33
+"RPLC_172","L-glycyl-L-hydroxyproline (Gly-Hyp-OH)",33
