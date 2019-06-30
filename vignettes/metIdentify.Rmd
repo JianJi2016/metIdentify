@@ -294,7 +294,7 @@ Then all the MS2 spectra match plots will be output in the "inhouse" folder.
 ## **Result integration and output**
 **************************************************
 
-You can also use other public database for metabolite identificaiton based on MS2 spectra. We provided four public database, which can be got from the [`demoData` package]((https://github.com/jaspershen/demoData/tree/master/inst/ms2_database)).
+You can also use other public database for metabolite identificaiton based on MS2 spectra. We provided four public database, which can be got from the [`demoData` package](https://github.com/jaspershen/demoData/tree/master/inst/ms2_database).
 
 - MassBank database (massbankDatabase0.0.1)
 
