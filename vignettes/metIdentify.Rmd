@@ -346,7 +346,7 @@ path <- system.file("hmdb_metabolite_database", package = "demoData")
 file.copy(from = file.path(path, "HMDB.metabolite.data"), 
           to = new.path, overwrite = TRUE, recursive = TRUE)
 
-result3 <- mzIdentify1(ms1.data = "ms1.peak.table.csv", ##csv format 
+result3 <- mzIdentify(ms1.data = "ms1.peak.table.csv", ##csv format 
            ms1.match.ppm = 25,
            polarity = "positive", 
            column = "rp",
