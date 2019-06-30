@@ -15,6 +15,10 @@ Peak names with identifications.
 \description{
 Get the peak names which have identifications.
 }
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+}
 \author{
 Xiaotao Shen
 \email{shenxt1990@163.com}

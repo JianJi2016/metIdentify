@@ -14,15 +14,19 @@ filterIden(object, ms1.match.ppm = 25, rt.match.tol = 30,
 
 \item{rt.match.tol}{RT match tolerance.}
 
-\item{ms2.match.tol}{MS2 match tolerance.}
+\item{ms2.match.tol}{MS2 match (MS2 similarity) tolerance.}
 
 \item{total.score.tol}{Total score tolerance.}
 }
 \value{
-An new metIdentifyClass.
+A new metIdentifyClass.
 }
 \description{
-Filter identifications according to mz error, RT error, MS similarity and total score.
+Filter identifications according to m/z error, RT error, MS similarity and total score.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

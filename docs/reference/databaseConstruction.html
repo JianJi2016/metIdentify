@@ -45,7 +45,7 @@
 
 <meta property="og:title" content="databaseConstruction — databaseConstruction" />
 
-<meta property="og:description" content="Construct MS2 spectra database according to mzXML data and compound information table.." />
+<meta property="og:description" content="Construct MS2 spectra database according to mzXML data and compound information table (csv format)." />
 
 <meta property="og:image" content="https://jaspershen.github.io/metIdentify/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metIdentify</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -133,12 +133,13 @@
 
     <div class="ref-description">
     
-    <p>Construct MS2 spectra database according to mzXML data and compound information table..</p>
+    <p>Construct MS2 spectra database according to mzXML data and compound information table (csv format).</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>databaseConstruction</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"0.0.1"</span>,
-  <span class='kw'>metabolite.info.name</span> <span class='kw'>=</span> <span class='st'>"metabolite.info.csv"</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"MS"</span>,
+  <span class='kw'>metabolite.info.name</span> <span class='kw'>=</span> <span class='st'>"metabolite.info.csv"</span>,
+  <span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"Michael Snyder Lab"</span>,
   <span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"http://snyderlab.stanford.edu/"</span>, <span class='kw'>creater</span> <span class='kw'>=</span> <span class='st'>"Xiaotao Shen"</span>,
   <span class='kw'>email</span> <span class='kw'>=</span> <span class='st'>"shenxt1990@163.com"</span>, <span class='kw'>rt</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>mz.tol</span> <span class='kw'>=</span> <span class='fl'>15</span>,
   <span class='kw'>rt.tol</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>)</pre>
@@ -156,7 +157,9 @@
     </tr>
     <tr>
       <th>metabolite.info.name</th>
-      <td><p>The metabolite information table name, it must be csv format.</p></td>
+      <td><p>The metabolite information table name, it must be csv format. 
+The demo data can be got from the `demoData` package. 
+Please see https://jaspershen.github.io/metIdentify/articles/metIdentify.html</p></td>
     </tr>
     <tr>
       <th>source</th>
@@ -168,7 +171,7 @@
     </tr>
     <tr>
       <th>creater</th>
-      <td><p>Creater name.</p></td>
+      <td><p>Creater name. For example, Xiaotao Shen.</p></td>
     </tr>
     <tr>
       <th>email</th>
@@ -176,7 +179,7 @@
     </tr>
     <tr>
       <th>rt</th>
-      <td><p>Do the metabolites have RT information or not?.</p></td>
+      <td><p>Do the metabolites have RT information or not?. If not, set it as FALSE.</p></td>
     </tr>
     <tr>
       <th>mz.tol</th>
@@ -196,6 +199,11 @@
 
     <p>A databaseClass object.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html</p></div>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -204,6 +212,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
     <h2>Author</h2>

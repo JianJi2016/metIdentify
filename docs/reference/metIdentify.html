@@ -45,7 +45,7 @@
 
 <meta property="og:title" content="metIdentify — metIdentify" />
 
-<meta property="og:description" content="Identify peaks based on MS/MS database." />
+<meta property="og:description" content="Identify metabolites based on MS/MS database." />
 
 <meta property="og:image" content="https://jaspershen.github.io/metIdentify/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metIdentify</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -133,7 +133,7 @@
 
     <div class="ref-description">
     
-    <p>Identify peaks based on MS/MS database.</p>
+    <p>Identify metabolites based on MS/MS database.</p>
     
     </div>
 
@@ -156,15 +156,15 @@
     </tr>
     <tr>
       <th>ms2.data</th>
-      <td><p>MS2 data, they must be mgf of msp files. For example, ms2.data = c("test.mgf", "test2.msp").</p></td>
+      <td><p>MS2 data, must be mgf, msp or mzXML format. For example, ms2.data = c("test.mgf", "test2.msp").</p></td>
     </tr>
     <tr>
       <th>ms1.ms2.match.mz.tol</th>
-      <td><p>MS1 peak and MS2 spectrum matching m/z tolerance.</p></td>
+      <td><p>MS1 peak and MS2 spectrum matching m/z tolerance. Default is 25 pm.</p></td>
     </tr>
     <tr>
       <th>ms1.ms2.match.rt.tol</th>
-      <td><p>MS1 peak and MS2 spectrum matching RT tolerance.</p></td>
+      <td><p>MS1 peak and MS2 spectrum matching RT tolerance. Default is 10 s.</p></td>
     </tr>
     <tr>
       <th>ms1.match.ppm</th>
@@ -176,23 +176,23 @@
     </tr>
     <tr>
       <th>mz.ppm.thr</th>
-      <td><p>m/z</p></td>
+      <td><p>Accurate mass tolerance for m/z error calculation.</p></td>
     </tr>
     <tr>
       <th>ms2.match.tol</th>
-      <td><p>MS2 match tolerance.</p></td>
+      <td><p>MS2 match (MS2 similarity) tolerance.</p></td>
     </tr>
     <tr>
       <th>fraction.weight</th>
-      <td><p>Fraction weight.</p></td>
+      <td><p>The weight for matched fragments.</p></td>
     </tr>
     <tr>
       <th>dp.forward.weight</th>
-      <td><p>Forward DP weight.</p></td>
+      <td><p>Forward dot product weight.</p></td>
     </tr>
     <tr>
       <th>dp.reverse.weight</th>
-      <td><p>Reverse DP weight.</p></td>
+      <td><p>Reverse dot product weight.</p></td>
     </tr>
     <tr>
       <th>rt.match.tol</th>
@@ -204,23 +204,23 @@
     </tr>
     <tr>
       <th>ce</th>
-      <td><p>Collision energy.</p></td>
+      <td><p>Collision energy. Please confirm the CE values in your database. Default is "all".</p></td>
     </tr>
     <tr>
       <th>column</th>
-      <td><p>"hilic" or "rp".</p></td>
+      <td><p>"hilic" (HILIC column) or "rp" (reverse phase).</p></td>
     </tr>
     <tr>
       <th>ms1.match.weight</th>
-      <td><p>MS1 match weight.</p></td>
+      <td><p>The weight of MS1 match for total score calculation.</p></td>
     </tr>
     <tr>
       <th>rt.match.weight</th>
-      <td><p>RT match weight.</p></td>
+      <td><p>The weight of RT match for total score calculation.</p></td>
     </tr>
     <tr>
       <th>ms2.match.weight</th>
-      <td><p>MS2 match weight.</p></td>
+      <td><p>The weight of MS2 match for total score calculation.</p></td>
     </tr>
     <tr>
       <th>path</th>
@@ -228,7 +228,7 @@
     </tr>
     <tr>
       <th>total.score.tol</th>
-      <td><p>Total score tolerance.</p></td>
+      <td><p>Total score tolerance. The total score are refering to MS-DIAL.</p></td>
     </tr>
     <tr>
       <th>candidate.num</th>
@@ -248,6 +248,11 @@
 
     <p>A metIdentifyClass object.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html</p></div>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -256,6 +261,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
     <h2>Author</h2>

@@ -10,7 +10,7 @@ readMGF(file)
 \item{file}{The vector of names of ms2 files. MS2 file must be mgf.}
 }
 \value{
-Return ms2 data. This is a list,
+Return ms2 data. This is a list.
 }
 \description{
 Read MGF data.

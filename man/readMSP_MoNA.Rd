@@ -10,7 +10,7 @@ readMSP_MoNA(file)
 \item{file}{The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.}
 }
 \value{
-Return ms2 data. This is a list,
+Return ms2 data. This is a list.
 }
 \description{
 Read MSP data from MoNA.

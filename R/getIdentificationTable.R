@@ -6,10 +6,12 @@
 #' \email{shenxt1990@@163.com}
 #' @param ... One or multiple metIdentifyClass objects.
 #' @param candidate.num The number of candidates.
-#' @param type The stype of identification table.
+#' @param type The type of identification table. 
 #' @return A identification table (data.frame).
 #' @export
-setGeneric(name = "getIdentificationTable1", 
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+setGeneric(name = "getIdentificationTable", 
            def = function(...,
                           candidate.num = 3,
                           type = c("old", "new")

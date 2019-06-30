@@ -16,23 +16,23 @@ ms2plot(object, database, which.peak = "all", ppm.tol = 30,
 \arguments{
 \item{object}{A metIdentifyClass object.}
 
-\item{database}{Used database.}
+\item{database}{Used database (databaseClass).}
 
-\item{which.peak}{Peak name(s) or "all".}
+\item{which.peak}{Peak name(s) or "all". You can use whichHasIden}
 
 \item{ppm.tol}{MS2 fragment match ppm.}
 
-\item{mz.ppm.thr}{m/z}
+\item{mz.ppm.thr}{The threshold for m/z error calculation.}
 
 \item{path}{Work directory.}
 
-\item{width}{inch.}
+\item{width}{The width of MS2 spectra match figure (inch).}
 
-\item{height}{inch.}
+\item{height}{The height of MS2 spectra match figure (inch).}
 
-\item{interaction.plot}{TRUE or FALSE.}
+\item{interaction.plot}{Output interactive plot or not.}
 
-\item{range.mz}{m/z range.}
+\item{range.mz}{m/z range for MS2 spectra match plot.}
 
 \item{range.int}{Relative intensity range.}
 
@@ -56,15 +56,19 @@ ms2plot(object, database, which.peak = "all", ppm.tol = 30,
 
 \item{figure.type}{"pdf" or "png".}
 
-\item{threads}{threads}
+\item{threads}{The number of threads}
 
-\item{one.folder}{Output all figure in one folder?}
+\item{one.folder}{Output all figure in one folder or not.}
 }
 \value{
 A or all ms2 match plot(s).
 }
 \description{
 Get MS2 match plots from a metIdentifyClass object.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

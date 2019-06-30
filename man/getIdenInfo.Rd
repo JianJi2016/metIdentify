@@ -9,7 +9,7 @@ getIdenInfo(object, which.peak, database)
 \arguments{
 \item{object}{A metIdentifyClass object.}
 
-\item{which.peak}{Peak name or "all".}
+\item{which.peak}{A peak name or "all". "all" means all peaks with identifications will be output.}
 
 \item{database}{Database used.}
 }
@@ -18,6 +18,10 @@ A identification table (data.frame).
 }
 \description{
 Get identification information from a metIdentifyClass object.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

@@ -8,7 +8,7 @@ getMS2spectrum(lab.id, database, polarity = c("positive", "negative"),
   ce = "30")
 }
 \arguments{
-\item{lab.id}{Lab ID.}
+\item{lab.id}{The lab ID of metabolite.}
 
 \item{database}{Database (databaseClass object).}
 
@@ -21,6 +21,10 @@ A MS2 spectrum.
 }
 \description{
 Get Ms2 spectra of peaks from databaseClass.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

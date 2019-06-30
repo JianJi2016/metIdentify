@@ -7,10 +7,10 @@
 readMSP(file)
 }
 \arguments{
-\item{file}{The vector of names of ms2 files. MS2 file must be msp.}
+\item{file}{The vector of names of ms2 files. MS2 file must be msp format.}
 }
 \value{
-Return ms2 data. This is a list,
+Return ms2 data. This is a list.
 }
 \description{
 Read MSP data.

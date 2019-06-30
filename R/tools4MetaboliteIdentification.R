@@ -329,8 +329,8 @@ setGeneric(name = "ListMGF",
 #'@description Read MSP data.
 #'@author Xiaotao Shen
 #'\email{shenxt1990@@163.com}
-#'@param file The vector of names of ms2 files. MS2 file must be msp.
-#'@return Return ms2 data. This is a list, 
+#'@param file The vector of names of ms2 files. MS2 file must be msp format.
+#'@return Return ms2 data. This is a list.
 #'@export
 setGeneric('readMSP', function(file) {
   msp.data <- readLines(file)
@@ -436,7 +436,7 @@ setGeneric('readMSP', function(file) {
 #'@author Xiaotao Shen
 #'\email{shenxt1990@@163.com}
 #'@param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
-#'@return Return ms2 data. This is a list, 
+#'@return Return ms2 data. This is a list.
 #'@export
 setGeneric('readMSP_MoNA', function(file) {
   cat("Read MSP data.\n")
@@ -740,7 +740,7 @@ setGeneric(name = "plotMS2match",
 #'@author Xiaotao Shen
 #'\email{shenxt1990@@163.com}
 #'@param file The vector of names of ms2 files. MS2 file must be mgf.
-#'@return Return ms2 data. This is a list,
+#'@return Return ms2 data. This is a list.
 #'@export
 
 setGeneric(name = "readMGF",

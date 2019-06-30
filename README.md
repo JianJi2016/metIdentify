@@ -7,6 +7,8 @@
 
 `metIdentify` is a R packge which is used for metabolite identification based on in-house database and public database based on accurate mass, rentention time and/or MS2 spectra.
 
+<img src="man/figures/workflow_metIdentify.png" align="middle" alt="" width = "80%"/>
+
 ## Installation
 
 You can install `metIdentify` from [Github](https://github.com/jaspershen/metIdentify).
@@ -21,6 +23,9 @@ devtools::install_github("jaspershen/metIdentify")
 ```
 ## Usage
 
-
 Please see the `Get started` page to get the instruction of `metIdentify`.
+
+## Need help?
+
+If you have any quesitions about `metIdentify`, please don't hesitate to email me (shenxt@stanford.edu). 
 

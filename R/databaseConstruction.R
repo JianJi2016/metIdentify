@@ -74,26 +74,31 @@
 # databaseConstruction(path = ".")
 ##------------------------------------------------------------------------------
 #' @title databaseConstruction
-#' @description Construct MS2 spectra database according to mzXML data and compound information table..
+#' @description Construct MS2 spectra database according to mzXML data and compound information table (csv format).
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param path Work directory.
+#' @param path Work directory. 
 #' @param version The version of you database. Default is 0.0.1.
-#' @param metabolite.info.name The metabolite information table name, it must be csv format.
+#' @param metabolite.info.name The metabolite information table name, it must be csv format. 
+#' The demo data can be got from the `demoData` package. 
+#' Please see https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 #' @param source The source of your database.
 #' @param link Website link of the source.
-#' @param creater Creater name.
+#' @param creater Creater name. For example, Xiaotao Shen.
 #' @param email email address.
-#' @param rt Do the metabolites have RT information or not?.
+#' @param rt Do the metabolites have RT information or not?. If not, set it as FALSE.
 #' @param mz.tol m/z tolerance for the match between metabolites and precursor m/z of MS2 spectra.
 #' @param rt.tol RT tolerance for the match between metabolites and precursor m/z of MS2 spectra.
 #' @param threads The number of threads
 #' @return A databaseClass object.
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 #' @export 
+
 databaseConstruction <- function(path = ".",
                                  version = "0.0.1",
                                  metabolite.info.name = "metabolite.info.csv",
-                                 source = "MS",
+                                 source = "Michael Snyder Lab",
                                  link = "http://snyderlab.stanford.edu/",
                                  creater = "Xiaotao Shen",
                                  email = "shenxt1990@163.com",
@@ -319,17 +324,23 @@ setMethod(f = "show",
 #' @description Get Ms2 spectra of peaks from databaseClass.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param lab.id Lab ID.
+#' @param lab.id The lab ID of metabolite.
 #' @param database Database (databaseClass object).
 #' @param polarity positive or negative.
 #' @param ce Collision value.
 #' @return A MS2 spectrum.
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+
 setGeneric(name = "getMS2spectrum", 
            def = function(lab.id,
                           database, 
                           polarity = c("positive", "negative"),
                           ce = "30"){
+             if(class(database) != "databaseClass"){
+               stop("The database must be databaseClass object.\n")
+             }
              pol <- ifelse(polarity == "positive", 1, 2)
              temp <- database@spectra.data[[pol]][[match(lab.id, names(database@spectra.data[[pol]]))]]
              temp[[match(ce, names(temp))]]

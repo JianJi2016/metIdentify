@@ -177,11 +177,10 @@
 #       return.predicted.rt = FALSE, 
 #       path = "exercise")
 # 
-# 
+# ``
 # file.name <- c("mix_b", "mix_c", "mix_d", "mix_e", "mix_f", "mix_mm",
 #                "pool_1", "pool_2", "pool_3", "pool_4", "pool_5", "pool_6", "pool_7", 
 #                "ipop", "exercise")
-# 
 # 
 # rt.table <- pbapply::pblapply(file.name, function(x){
 #   readr::read_csv(file.path(x, "Feature.table.with.corrected.RT.csv"))
@@ -467,15 +466,13 @@
 # save(msDatabase_hilic0.0.1, file = "msDatabase_hilic0.0.1")
 
 
-
-
 #' @title metIdentify
 #' @description Identify peaks based on MS/MS database.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param experiment.is.table Experiment internal standard table
+#' @param experiment.is.table Experiment internal standard table.
 #' @param database.is.table Database internal standard table
-#' @param database Database, must be dataaseClass object.
+#' @param database Database, must be datasetClass object.
 #' @param method polyline or loess.
 #' @param poly A numeric vector.
 #' @param degree A numeric vector.

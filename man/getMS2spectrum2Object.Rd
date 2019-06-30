@@ -9,13 +9,17 @@ getMS2spectrum2Object(peak.name, object)
 \arguments{
 \item{peak.name}{Peak name.}
 
-\item{object}{metIdentifyClass}
+\item{object}{metIdentifyClass.}
 }
 \value{
 A MS2 spectrum.
 }
 \description{
-Get spectra of peaks.
+Get spectra of peaks from metIdentifyClass object.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

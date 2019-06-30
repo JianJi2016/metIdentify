@@ -20,6 +20,10 @@ A identification table (data.frame).
 \description{
 Get identification table from a mzIdentifyClass object.
 }
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+}
 \author{
 Xiaotao Shen
 \email{shenxt1990@163.com}

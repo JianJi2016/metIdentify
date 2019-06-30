@@ -2,27 +2,20 @@
 #' @description Identify peaks based on mz database.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param ms1.data The name of ms1 peak table (csv format). Column 1 is "name", Column 2 is
-#' "mz" and column is "rt" (second).
+#' @param ms1.data The name of ms1 peak table (csv format). Column 1 is "name", column 2 is
+#' "mz" and column 3 is "rt" (second).
 #' @param ms1.match.ppm Precursor match ppm tolerance.
 #' @param polarity The polarity of data, "positive"or "negative".
-#' @param column "hilic" or "rp".
+#' @param column "hilic" (HILIC column) or "rp" (reverse phase).
 #' @param path Work directory.
-#' @param candidate.num The number of candidate.
+#' @param candidate.num The number of candidates.
 #' @param database MS1 database name.
 #' @param threads Number of threads
 #' @return A mzIdentifyClass object.
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 
-# setwd("E:/project/si_wu/1stLayer_annotation_PE/RPLC_pos/ms1")
-# ms1.data <- "ms1.peak.table.csv"
-# ms1.match.ppm = 25
-# polarity = "positive"
-# column = "rp"
-# path = "."
-# candidate.num = 3
-# database = "HMDB.metabolite.data"
-# threads = 10
 setGeneric(name = "mzIdentify",
            def = function(ms1.data, ##csv format
                           ms1.match.ppm = 25,
@@ -245,8 +238,11 @@ setMethod(f = "show",
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A mzIdentifyClass object.
-#' @return A data.frame contains all the parameters of this metIdentifiyClass object.
+#' @return A data frame contains all the parameters of this metIdentifiyClass object.
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+
 setGeneric(name = "getParams2", 
            def = function(object){
              if(class(object) != "mzIdentifyClass") stop("Only for mzIdentifyClass\n")
@@ -287,6 +283,9 @@ setGeneric(name = "getParams2",
 #' @param type The type of identification table.
 #' @return A identification table (data.frame).
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+
 setGeneric(name = "getIdentificationTable2", 
            def = function(object,
                           candidate.num = 3,

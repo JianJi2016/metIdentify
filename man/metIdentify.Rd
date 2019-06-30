@@ -17,43 +17,43 @@ metIdentify(ms1.data, ms2.data, ms1.ms2.match.mz.tol = 25,
 \item{ms1.data}{The name of ms1 peak table (csv format). Column 1 is "name", Column 2 is
 "mz" and column is "rt" (second).}
 
-\item{ms2.data}{MS2 data, they must be mgf of msp files. For example, ms2.data = c("test.mgf", "test2.msp").}
+\item{ms2.data}{MS2 data, must be mgf, msp or mzXML format. For example, ms2.data = c("test.mgf", "test2.msp").}
 
-\item{ms1.ms2.match.mz.tol}{MS1 peak and MS2 spectrum matching m/z tolerance.}
+\item{ms1.ms2.match.mz.tol}{MS1 peak and MS2 spectrum matching m/z tolerance. Default is 25 pm.}
 
-\item{ms1.ms2.match.rt.tol}{MS1 peak and MS2 spectrum matching RT tolerance.}
+\item{ms1.ms2.match.rt.tol}{MS1 peak and MS2 spectrum matching RT tolerance. Default is 10 s.}
 
 \item{ms1.match.ppm}{Precursor match ppm tolerance.}
 
 \item{ms2.match.ppm}{Fragment ion match ppm tolerance.}
 
-\item{mz.ppm.thr}{m/z}
+\item{mz.ppm.thr}{Accurate mass tolerance for m/z error calculation.}
 
-\item{ms2.match.tol}{MS2 match tolerance.}
+\item{ms2.match.tol}{MS2 match (MS2 similarity) tolerance.}
 
-\item{fraction.weight}{Fraction weight.}
+\item{fraction.weight}{The weight for matched fragments.}
 
-\item{dp.forward.weight}{Forward DP weight.}
+\item{dp.forward.weight}{Forward dot product weight.}
 
-\item{dp.reverse.weight}{Reverse DP weight.}
+\item{dp.reverse.weight}{Reverse dot product weight.}
 
 \item{rt.match.tol}{RT match tolerance.}
 
 \item{polarity}{The polarity of data, "positive"or "negative".}
 
-\item{ce}{Collision energy.}
+\item{ce}{Collision energy. Please confirm the CE values in your database. Default is "all".}
 
-\item{column}{"hilic" or "rp".}
+\item{column}{"hilic" (HILIC column) or "rp" (reverse phase).}
 
-\item{ms1.match.weight}{MS1 match weight.}
+\item{ms1.match.weight}{The weight of MS1 match for total score calculation.}
 
-\item{rt.match.weight}{RT match weight.}
+\item{rt.match.weight}{The weight of RT match for total score calculation.}
 
-\item{ms2.match.weight}{MS2 match weight.}
+\item{ms2.match.weight}{The weight of MS2 match for total score calculation.}
 
 \item{path}{Work directory.}
 
-\item{total.score.tol}{Total score tolerance.}
+\item{total.score.tol}{Total score tolerance. The total score are refering to MS-DIAL.}
 
 \item{candidate.num}{The number of candidate.}
 
@@ -65,7 +65,11 @@ metIdentify(ms1.data, ms2.data, ms1.ms2.match.mz.tol = 25,
 A metIdentifyClass object.
 }
 \description{
-Identify peaks based on MS/MS database.
+Identify metabolites based on MS/MS database.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

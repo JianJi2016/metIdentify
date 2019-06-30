@@ -9,18 +9,18 @@ mzIdentify(ms1.data, ms1.match.ppm = 25, polarity = c("positive",
   candidate.num = 3, database, threads = 3)
 }
 \arguments{
-\item{ms1.data}{The name of ms1 peak table (csv format). Column 1 is "name", Column 2 is
-"mz" and column is "rt" (second).}
+\item{ms1.data}{The name of ms1 peak table (csv format). Column 1 is "name", column 2 is
+"mz" and column 3 is "rt" (second).}
 
 \item{ms1.match.ppm}{Precursor match ppm tolerance.}
 
 \item{polarity}{The polarity of data, "positive"or "negative".}
 
-\item{column}{"hilic" or "rp".}
+\item{column}{"hilic" (HILIC column) or "rp" (reverse phase).}
 
 \item{path}{Work directory.}
 
-\item{candidate.num}{The number of candidate.}
+\item{candidate.num}{The number of candidates.}
 
 \item{database}{MS1 database name.}
 
@@ -31,6 +31,10 @@ A mzIdentifyClass object.
 }
 \description{
 Identify peaks based on mz database.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

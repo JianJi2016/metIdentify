@@ -3,7 +3,7 @@
 export(databaseConstruction)
 export(filterIden)
 export(getIdenInfo)
-export(getIdentificationTable1)
+export(getIdentificationTable)
 export(getIdentificationTable2)
 export(getMS2spectrum)
 export(getMS2spectrum2Object)

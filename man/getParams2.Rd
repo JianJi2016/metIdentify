@@ -10,10 +10,14 @@ getParams2(object)
 \item{object}{A mzIdentifyClass object.}
 }
 \value{
-A data.frame contains all the parameters of this metIdentifiyClass object.
+A data frame contains all the parameters of this metIdentifiyClass object.
 }
 \description{
 Get parameters from a mzIdentifyClass object.
+}
+\seealso{
+The example and demo data of this function can be found 
+https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 }
 \author{
 Xiaotao Shen

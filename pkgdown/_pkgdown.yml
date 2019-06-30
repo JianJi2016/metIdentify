@@ -14,25 +14,34 @@ development:
   mode: auto
 
 reference:
+  - title: Database construction
+    desc: Construct in-house MS2 spectra database.
+    contents:
+    - getMS2spectrum
+    - databaseConstruction
+    
   - title: Metabolite identification
     desc: Metabolite identification based on MS1 and MS2 library.
     contents:
     - metIdentify
-
-  - title: Functions for metIdentifyClass
-    desc: Functions for metIdentifyClass
-    contents:
     - filterIden
     - getIdenInfo
     - getIdentificationTable
+    - getIdentificationTable2
     - getMS2spectrum2Object
     - getParams
+    - getParams2
     - ms2plot
-    - readMSP
+    - mzIdentify
+    - rtCor4database
     - whichHasIden
-    
-  - title: Database construction
-    desc: Construct in-house MS2 spectra
+
+  - title: Other function
+    desc: Other functions
     contents:
-    - getMS2spectrum
+    - readMGF
+    - readMSP
+    - readMSP_MoNA
+    - readMZXML
+
 

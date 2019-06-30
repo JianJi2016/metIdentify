@@ -63,7 +63,7 @@ setMethod(f = "show",
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
-#' @return A data.frame contains all the parameters of this metIdentifiyClass object.
+#' @return A data frame contains all the parameters of this metIdentifiyClass object.
 #' @export
 setGeneric(name = "getParams", 
            def = function(object){
@@ -131,10 +131,13 @@ setGeneric(name = "getParams",
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
-#' @param which.peak Peak name or "all".
+#' @param which.peak A peak name or "all". "all" means all peaks with identifications will be output.
 #' @param database Database used.
 #' @return A identification table (data.frame).
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+
 setGeneric(name = "getIdenInfo",
            def = function(object,
                           which.peak,
@@ -148,6 +151,7 @@ setGeneric(name = "getIdenInfo",
              identification.result <- object@identification.result
              
              which.peak <- as.character(which.peak)
+             
              if(!which.peak %in% object@ms1.data$name){
                stop(which.peak, " is not in peak table, please check it.\n")
              }
@@ -179,15 +183,15 @@ setGeneric(name = "getIdenInfo",
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
-#' @param database Used database.
-#' @param which.peak Peak name(s) or "all".
+#' @param database Used database (databaseClass).
+#' @param which.peak Peak name(s) or "all". You can use whichHasIden 
 #' @param ppm.tol MS2 fragment match ppm.
-#' @param mz.ppm.thr m/z
+#' @param mz.ppm.thr The threshold for m/z error calculation.
 #' @param path Work directory.
-#' @param width inch.
-#' @param height inch.
-#' @param interaction.plot TRUE or FALSE.
-#' @param range.mz m/z range.
+#' @param width The width of MS2 spectra match figure (inch).
+#' @param height The height of MS2 spectra match figure (inch).
+#' @param interaction.plot Output interactive plot or not.
+#' @param range.mz m/z range for MS2 spectra match plot.
 #' @param range.int Relative intensity range.
 #' @param xlab Title of x axis.
 #' @param ylab Title of y axis.
@@ -199,32 +203,12 @@ setGeneric(name = "getIdenInfo",
 #' @param legend.title.size Legend title size.
 #' @param legend.text.size Legend text size.
 #' @param figure.type "pdf" or "png".
-#' @param threads threads
-#' @param one.folder Output all figure in one folder?
+#' @param threads The number of threads
+#' @param one.folder Output all figure in one folder or not.
 #' @return A or all ms2 match plot(s).
 #' @export 
-
-
-# object = object
-# database = nistDatabase0.0.1
-# which.peak = "9.25_379.2487n"
-# path = "."
-# width = 20
-# height = 7
-# interaction.plot = FALSE
-# range.int = c(-1, 1)
-# xlab = "Mass to charge ratio (m/z)"
-# ylab = "Relative intensity"
-# col.lib = "red"
-# col.exp = "black"
-# col.filtered = "gray"
-# title.size = 15
-# lab.size = 12
-# axis.text.size =12
-# legend.title.size = 12
-# legend.text.size = 10
-# figure.type = "png"
-# threads = 3
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 
 setGeneric(name = "ms2plot", 
            def = function(object,
@@ -476,6 +460,9 @@ setGeneric(name = "ms2plot",
 #' @param object A metIdentifyClass object.
 #' @return Peak names with identifications.
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+
 setGeneric(name = "whichHasIden", 
            def = function(object){
              if(class(object) != "metIdentifyClass") stop("Only for metIdentifyClass\n")
@@ -486,16 +473,20 @@ setGeneric(name = "whichHasIden",
 
 #------------------------------------------------------------------------------
 #' @title filterIden
-#' @description Filter identifications according to mz error, RT error, MS similarity and total score.
+#' @description Filter identifications according to m/z error, RT error, MS similarity and total score.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
 #' @param ms1.match.ppm MS1 match ppm.
 #' @param rt.match.tol RT match tolerance.
-#' @param ms2.match.tol MS2 match tolerance.
+#' @param ms2.match.tol MS2 match (MS2 similarity) tolerance.
 #' @param total.score.tol Total score tolerance.
-#' @return An new metIdentifyClass.
+#' @return A new metIdentifyClass.
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+#' 
+#' 
 setGeneric(name = "filterIden",
            def = function(object,
                           ms1.match.ppm = 25,
@@ -689,13 +680,15 @@ setGeneric(name = "filterIden",
 
 #------------------------------------------------------------------------------
 #' @title getMS2spectrum2Object
-#' @description Get spectra of peaks.
+#' @description Get spectra of peaks from metIdentifyClass object.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param peak.name Peak name.
-#' @param object metIdentifyClass
+#' @param object metIdentifyClass.
 #' @return A MS2 spectrum.
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 
 setGeneric(name = "getMS2spectrum2Object", 
            def = function(peak.name,

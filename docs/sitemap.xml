@@ -13,7 +13,7 @@
     <loc>https://jaspershen.github.io/metIdentify//reference/getIdenInfo.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metIdentify//reference/getIdentificationTable1.html</loc>
+    <loc>https://jaspershen.github.io/metIdentify//reference/getIdentificationTable.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/getIdentificationTable2.html</loc>
@@ -31,10 +31,19 @@
     <loc>https://jaspershen.github.io/metIdentify//reference/getParams2.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/hilic.neg.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/hilic.pos.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/metIdentify.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/ms2plot.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/msDatabase_rplc0.0.1.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/mzIdentify.html</loc>
@@ -50,6 +59,12 @@
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/readMZXML.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/rp.neg.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/rp.pos.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/rtCor4database.html</loc>

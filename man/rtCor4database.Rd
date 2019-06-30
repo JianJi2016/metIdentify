@@ -9,11 +9,11 @@ rtCor4database(experiment.is.table, database.is.table, database,
   degree = c(1, 2), path = ".")
 }
 \arguments{
-\item{experiment.is.table}{Experiment internal standard table}
+\item{experiment.is.table}{Experiment internal standard table.}
 
 \item{database.is.table}{Database internal standard table}
 
-\item{database}{Database, must be dataaseClass object.}
+\item{database}{Database, must be datasetClass object.}
 
 \item{method}{polyline or loess.}
 

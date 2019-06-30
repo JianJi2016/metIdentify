@@ -1,33 +1,35 @@
 #' @title metIdentify
-#' @description Identify peaks based on MS/MS database.
+#' @description Identify metabolites based on MS/MS database.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param ms1.data The name of ms1 peak table (csv format). Column 1 is "name", Column 2 is
 #' "mz" and column is "rt" (second).
-#' @param ms2.data MS2 data, they must be mgf of msp files. For example, ms2.data = c("test.mgf", "test2.msp").
-#' @param ms1.ms2.match.mz.tol MS1 peak and MS2 spectrum matching m/z tolerance.
-#' @param ms1.ms2.match.rt.tol MS1 peak and MS2 spectrum matching RT tolerance.
+#' @param ms2.data MS2 data, must be mgf, msp or mzXML format. For example, ms2.data = c("test.mgf", "test2.msp").
+#' @param ms1.ms2.match.mz.tol MS1 peak and MS2 spectrum matching m/z tolerance. Default is 25 pm.
+#' @param ms1.ms2.match.rt.tol MS1 peak and MS2 spectrum matching RT tolerance. Default is 10 s.
 #' @param ms1.match.ppm Precursor match ppm tolerance.
 #' @param ms2.match.ppm Fragment ion match ppm tolerance.
-#' @param mz.ppm.thr m/z
-#' @param ms2.match.tol MS2 match tolerance.
-#' @param fraction.weight Fraction weight.
-#' @param dp.forward.weight Forward DP weight.
-#' @param dp.reverse.weight Reverse DP weight.
+#' @param mz.ppm.thr Accurate mass tolerance for m/z error calculation.
+#' @param ms2.match.tol MS2 match (MS2 similarity) tolerance.
+#' @param fraction.weight The weight for matched fragments.
+#' @param dp.forward.weight Forward dot product weight.
+#' @param dp.reverse.weight Reverse dot product weight.
 #' @param rt.match.tol RT match tolerance.
 #' @param polarity The polarity of data, "positive"or "negative".
-#' @param ce Collision energy.
-#' @param column "hilic" or "rp".
-#' @param ms1.match.weight MS1 match weight.
-#' @param rt.match.weight RT match weight.
-#' @param ms2.match.weight MS2 match weight.
+#' @param ce Collision energy. Please confirm the CE values in your database. Default is "all".
+#' @param column "hilic" (HILIC column) or "rp" (reverse phase).
+#' @param ms1.match.weight The weight of MS1 match for total score calculation.
+#' @param rt.match.weight The weight of RT match for total score calculation.
+#' @param ms2.match.weight The weight of MS2 match for total score calculation.
 #' @param path Work directory.
-#' @param total.score.tol Total score tolerance.
+#' @param total.score.tol Total score tolerance. The total score are refering to MS-DIAL.
 #' @param candidate.num The number of candidate.
 #' @param database MS2 database name.
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
 #' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 
     setGeneric(name = "metIdentify",
            def = function(ms1.data, ##csv format
@@ -324,15 +326,15 @@
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.1.3 (20190620)
+Version 0.1.4 (20190628)
 --------------
-o A bug fix.")
+o Add help document.")
 }
 
 packageStartupMessage("metIdentify,
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.1.3 (20190620)
+Version 0.1.4 (20190628)
 --------------
-o A bug fix.")
+o Add help document.")
