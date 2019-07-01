@@ -87,7 +87,6 @@
 # #
 # #
 # #
-# # ######∂‘“«∆˜¿‡–ÕΩ¯––…∏—°
 # #
 # # instrument <- lapply(massbank, function(x){
 # #   x[[1]][9, 2]
@@ -109,7 +108,6 @@
 # #
 # #
 # #
-# # #######Ω´massbank’˝∏∫¿Î◊”∑÷ø™
 # # polarity <- lapply(massbank1, function(x){
 # #   x[[1]][11, 2]
 # # })
