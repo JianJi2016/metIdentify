@@ -117,7 +117,6 @@
 # # massbank.neg <- massbank1[which(polarity == "NEGATIVE")]
 # #
 # #
-# # ####观察ce分布
 # # ce <- lapply(massbank1, function(x){
 # #   x[[1]][12, 2]
 # # })
@@ -125,7 +124,6 @@
 # # ce <- unlist(ce)
 # # table(ce)
 # #
-# # ##创建met.compound information
 # # colnames(zhuMetlib.meta.compound)
 # #
 # # name <- unlist(lapply(massbank1, function(x){
@@ -1221,3 +1219,19 @@
 # 
 # 
 # 
+
+
+# library(magrittr)
+# 
+# names(hmdbDatabase0.0.1@spectra.data$Spectra.positive) %in% hmdbDatabase0.0.1@spectra.info$Lab.ID %>% 
+# which(.) %>%
+#   `[` (hmdbDatabase0.0.1@spectra.info$HMDB.ID, .) %>%
+#   unique(.) %>%
+#   length
+# 
+# 
+# names(hmdbDatabase0.0.1@spectra.data$Spectra.negative) %in% hmdbDatabase0.0.1@spectra.info$Lab.ID %>% 
+#   which(.) %>%
+#   `[` (hmdbDatabase0.0.1@spectra.info$HMDB.ID, .) %>%
+#   unique(.) %>%
+#   length
