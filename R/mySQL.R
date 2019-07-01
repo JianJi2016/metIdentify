@@ -42,7 +42,6 @@
 #                      fileEncoding="ascii"
 #                      )
 # 
-# df <- data.frame(x = 1, y = "佃煮惣菜", stringsAsFactors = FALSE)
 # dbWriteTable(conn = shendatabase, name = 'testutf8', value = df, 
 #              temporary = TRUE, overwrite = TRUE)
 # temp <- dbReadTable(conn = shendatabase, 'testutf8')
