@@ -7,7 +7,7 @@ authors:
 template:
   params:
     docsearch:
-      api_key: fbd8d79ed49f21fc9ca7b2cf601a3f5b
+      api_key: 2f09495997a50f5008bc92fa73c5552d
       index_name: jaspershen-metidentify
 
 development:
