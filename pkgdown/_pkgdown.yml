@@ -8,7 +8,7 @@ template:
   params:
     docsearch:
       api_key: 2f09495997a50f5008bc92fa73c5552d
-      index_name: jaspershen-metidentify
+      index_name: metidentify
 
 development:
   mode: auto
