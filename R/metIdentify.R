@@ -60,7 +60,6 @@
                stop("No database is provided.\n")
              }
              
-
              ##parameter specification
              polarity <- match.arg(polarity)
              column <- match.arg(column)
@@ -83,8 +82,8 @@
              database.name <- database
              load(file.path(path, database.name))
              database <- get(database.name)
-             if(class(database) != "metIdentifyClass"){
-               stop("database must be metIdentifyClass object\n")
+             if(class(database) != "databaseClass"){
+               stop("database must be databaseClass object\n")
              }
              
              ce.list.pos <- unique(unlist(lapply(database@spectra.data$Spectra.positive, names)))
