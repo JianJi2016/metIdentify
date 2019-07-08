@@ -2,7 +2,7 @@
 % Please edit documentation in R/rtCorrection.R
 \name{rtCor4database}
 \alias{rtCor4database}
-\title{metIdentify}
+\title{rtCor4database}
 \usage{
 rtCor4database(experiment.is.table, database.is.table, database,
   method = c("polyline", "loess"), poly = c(1, 2, 3, 4, 5),
@@ -11,7 +11,7 @@ rtCor4database(experiment.is.table, database.is.table, database,
 \arguments{
 \item{experiment.is.table}{Experiment internal standard table.}
 
-\item{database.is.table}{Database internal standard table}
+\item{database.is.table}{Database internal standard table.}
 
 \item{database}{Database, must be datasetClass object.}
 
@@ -27,7 +27,7 @@ rtCor4database(experiment.is.table, database.is.table, database,
 A metIdentifyClass object.
 }
 \description{
-Identify peaks based on MS/MS database.
+Correct RTs of metabolites in database using internal standard list.
 }
 \author{
 Xiaotao Shen

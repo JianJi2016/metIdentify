@@ -13,10 +13,6 @@
 # 
 # 
 # 
-# 
-# 
-# 
-# 
 # setwd("D:/study/database and library/RT prediction/RPLC")
 # load("msDatabase_rplc0.0.1")
 # load("HMDB.metabolite.data")
@@ -27,9 +23,6 @@
 # 
 # temp.idx1 <- spectra.info$Compound.name %>%
 #   match(.,HMDB.metabolite.data$Compound.name)
-#   
-# # cbind(HMDB.metabolite.data$HMDB.ID[temp.idx],
-# # spectra.info$HMDB.ID)
 # 
 # name1 <- spectra.info$Compound.name
 # name2 <- HMDB.metabolite.data$Compound.name
@@ -63,7 +56,7 @@
 # 
 # temp.idx <- data.frame(temp.idx1, temp.idx2, stringsAsFactors = FALSE)
 # 
-#   
+# 
 # temp.idx <- apply(temp.idx, 1,function(x){
 #   if(is.na(x[1]) & is.na(x)[2]) return(NA)
 #   if(is.na(x[1]) & !is.na(x)[2]) return(x[2])
@@ -75,7 +68,7 @@
 # hmdb.id1 <- spectra.info$HMDB.ID
 # kegg.id1 <- spectra.info$KEGG.ID
 # 
-# cas.id <- data.frame(cas.id1, HMDB.metabolite.data$CAS.ID[temp.idx], 
+# cas.id <- data.frame(cas.id1, HMDB.metabolite.data$CAS.ID[temp.idx],
 #                      stringsAsFactors = FALSE)
 # cas.id <- apply(cas.id, 1, function(x){
 #   if(is.na(x[1]) & is.na(x)[2]) return(NA)
@@ -84,7 +77,7 @@
 # })
 # 
 # 
-# hmdb.id <- data.frame(hmdb.id1, HMDB.metabolite.data$HMDB.ID[temp.idx], 
+# hmdb.id <- data.frame(hmdb.id1, HMDB.metabolite.data$HMDB.ID[temp.idx],
 #                      stringsAsFactors = FALSE)
 # hmdb.id <- apply(hmdb.id, 1, function(x){
 #   if(is.na(x[1]) & is.na(x)[2]) return(NA)
@@ -93,7 +86,7 @@
 # })
 # 
 # 
-# kegg.id <- data.frame(kegg.id1, HMDB.metabolite.data$KEGG.ID[temp.idx], 
+# kegg.id <- data.frame(kegg.id1, HMDB.metabolite.data$KEGG.ID[temp.idx],
 #                       stringsAsFactors = FALSE)
 # kegg.id <- apply(kegg.id, 1, function(x){
 #   if(is.na(x[1]) & is.na(x)[2]) return(NA)
@@ -107,129 +100,204 @@
 # spectra.info$KEGG.ID <- kegg.id
 # 
 # 
-# name1
-# 
-# 
-# library(CTSgetR)
-# # cas.id <- CTSgetR(id = name1, from = "Chemical Name", to = "CAS")
-# # hmdb.id <- CTSgetR(id = name1, from = "Chemical Name", to = "Human Metabolome Database")
-# # kegg.id <- CTSgetR(id = name1, from = "Chemical Name", to = "KEGG")
-# load("name1")
-# cas.id <- vector(mode = "list", length = length(name1))
-# hmdb.id <- vector(mode = "list", length = length(name1))
-# kegg.id <- vector(mode = "list", length = length(name1))
-# 
-# for(i in 614:length(name1)){
-#   cat(i, " ")
-#   temp <- try(CTSgetR(id = name1[i], from = "Chemical Name", to = "CAS"), silent = FALSE)
-#   if(class(temp) == "try-error"){
-#     cas.id[[i]] <- matrix(NA, ncol = 2, nrow = 1)
-#   }else{
-#     cas.id[[i]] <- temp
-#   }
-# }
-# 
-# cas.id <- lapply(cas.id, function(x){
-#   colnames(x) <- c("Chemical Name", "CAS")
-#   x
-# })
-# 
-# cas.id <- do.call(rbind, cas.id)
-# cas.id[,2] <- as.character(cas.id[,2])
-# cbind(cas.id[,2], spectra.info$CAS.ID)
-# 
-# 
-# for(i in 773:length(name1)){
-#   cat(i, " ")
-#   temp <- try(CTSgetR(id = name1[i], from = "Chemical Name", to = "KEGG"), silent = FALSE)
-#   if(class(temp) == "try-error"){
-#     kegg.id[[i]] <- matrix(NA, ncol = 2, nrow = 1)
-#   }else{
-#     kegg.id[[i]] <- temp
-#   }
-# }
-# 
-# kegg.id <- lapply(kegg.id, function(x){
-#   colnames(x) <- c("Chemical", "KEGG")
-#   x
-# })
-# kegg.id <- do.call(rbind, kegg.id)
-# 
-# save(kegg.id, file = "kegg.id")
-# save(cas.id, file = "cas.id")
-# 
-# kegg.id$KEGG <- as.character(kegg.id$KEGG)
-# kegg.id$KEGG[is.na(kegg.id$KEGG)] <- ""
-# temp.idx <- which(kegg.id$KEGG == "")
-# for(i in temp.idx){
-#   cat(i, " ")
-#   temp <- try(CTSgetR(id = name1[i], from = "Chemical Name", to = "Human Metabolome Database"), silent = FALSE)
-#   if(class(temp) == "try-error"){
-#     hmdb.id[[i]] <- matrix(NA, ncol = 2, nrow = 1)
-#   }else{
-#     hmdb.id[[i]] <- temp
-#   }
-# }
-# 
-# save(hmdb.id, file = "hmdb.id")
-# 
-# hmdb.id <- lapply(hmdb.id, function(x){
-#   if(class(x) == "NULL"){
-#     x <- matrix(NA, ncol = 2, nrow = 1)
-#   }
-#   x
-# })
-# 
-# 
-# hmdb.id <- lapply(hmdb.id, function(x){
-#   colnames(x) <- c("Chemical", "KEGG")
-#   x
-# })
-# hmdb.id <- do.call(rbind, hmdb.id)
-# save(hmdb.id, file = "hmdb.id")
-# 
-# kegg.id <- kegg.id$KEGG
-# cas.id <- cas.id$CAS
-# hmdb.id <-hmdb.id$KEGG 
-# hmdb.id <- as.character(hmdb.id)
-# 
-# cas.id[which(cas.id == "")] <- NA
-# 
-# hmdb.id[which(hmdb.id == "")] <- NA
-# kegg.id[which(kegg.id == "")] <- NA
-# 
-# cas.id1 <- data.frame(spectra.info$CAS.ID, cas.id, stringsAsFactors = FALSE)
-# 
-# cas.id2 <- apply(cas.id1, 1, function(x){
-#   if(!is.na(x[1])) return(x[1])
-#   if(all(is.na(x))) return(NA)
-#   if(is.na(x[1]) & !is.na(x[2])) return(x[2])
-# })
-# 
-# 
-# hmdb.id1 <- data.frame(spectra.info$HMDB.ID, hmdb.id, stringsAsFactors = FALSE)
-# 
-# hmdb.id2 <- apply(hmdb.id1, 1, function(x){
-#   if(!is.na(x[1])) return(x[1])
-#   if(all(is.na(x))) return(NA)
-#   if(is.na(x[1]) & !is.na(x[2])) return(x[2])
-# })
-# 
-# 
-# kegg.id1 <- data.frame(spectra.info$KEGG.ID, kegg.id, stringsAsFactors = FALSE)
-# 
-# kegg.id2 <- apply(kegg.id1, 1, function(x){
-#   if(!is.na(x[1])) return(x[1])
-#   if(all(is.na(x))) return(NA)
-#   if(is.na(x[1]) & !is.na(x[2])) return(x[2])
-# })
-# 
-# 
-# spectra.info$CAS.ID <- cas.id2
-# spectra.info$HMDB.ID <- hmdb.id2
-# spectra.info$KEGG.ID <- kegg.id2
+# # name1
+# # 
+# # 
+# # library(CTSgetR)
+# # # cas.id <- CTSgetR(id = name1, from = "Chemical Name", to = "CAS")
+# # # hmdb.id <- CTSgetR(id = name1, from = "Chemical Name", to = "Human Metabolome Database")
+# # # kegg.id <- CTSgetR(id = name1, from = "Chemical Name", to = "KEGG")
+# # load("name1")
+# # cas.id <- vector(mode = "list", length = length(name1))
+# # hmdb.id <- vector(mode = "list", length = length(name1))
+# # kegg.id <- vector(mode = "list", length = length(name1))
+# # 
+# # for(i in 614:length(name1)){
+# #   cat(i, " ")
+# #   temp <- try(CTSgetR(id = name1[i], from = "Chemical Name", to = "CAS"), silent = FALSE)
+# #   if(class(temp) == "try-error"){
+# #     cas.id[[i]] <- matrix(NA, ncol = 2, nrow = 1)
+# #   }else{
+# #     cas.id[[i]] <- temp
+# #   }
+# # }
+# # 
+# # cas.id <- lapply(cas.id, function(x){
+# #   colnames(x) <- c("Chemical Name", "CAS")
+# #   x
+# # })
+# # 
+# # cas.id <- do.call(rbind, cas.id)
+# # cas.id[,2] <- as.character(cas.id[,2])
+# # cbind(cas.id[,2], spectra.info$CAS.ID)
+# # 
+# # 
+# # for(i in 773:length(name1)){
+# #   cat(i, " ")
+# #   temp <- try(CTSgetR(id = name1[i], from = "Chemical Name", to = "KEGG"), silent = FALSE)
+# #   if(class(temp) == "try-error"){
+# #     kegg.id[[i]] <- matrix(NA, ncol = 2, nrow = 1)
+# #   }else{
+# #     kegg.id[[i]] <- temp
+# #   }
+# # }
+# # 
+# # kegg.id <- lapply(kegg.id, function(x){
+# #   colnames(x) <- c("Chemical", "KEGG")
+# #   x
+# # })
+# # kegg.id <- do.call(rbind, kegg.id)
+# # 
+# # save(kegg.id, file = "kegg.id")
+# # save(cas.id, file = "cas.id")
+# # 
+# # kegg.id$KEGG <- as.character(kegg.id$KEGG)
+# # kegg.id$KEGG[is.na(kegg.id$KEGG)] <- ""
+# # temp.idx <- which(kegg.id$KEGG == "")
+# # for(i in temp.idx){
+# #   cat(i, " ")
+# #   temp <- try(CTSgetR(id = name1[i], from = "Chemical Name", to = "Human Metabolome Database"), silent = FALSE)
+# #   if(class(temp) == "try-error"){
+# #     hmdb.id[[i]] <- matrix(NA, ncol = 2, nrow = 1)
+# #   }else{
+# #     hmdb.id[[i]] <- temp
+# #   }
+# # }
+# # 
+# # save(hmdb.id, file = "hmdb.id")
+# # 
+# # hmdb.id <- lapply(hmdb.id, function(x){
+# #   if(class(x) == "NULL"){
+# #     x <- matrix(NA, ncol = 2, nrow = 1)
+# #   }
+# #   x
+# # })
+# # 
+# # 
+# # hmdb.id <- lapply(hmdb.id, function(x){
+# #   colnames(x) <- c("Chemical", "KEGG")
+# #   x
+# # })
+# # hmdb.id <- do.call(rbind, hmdb.id)
+# # save(hmdb.id, file = "hmdb.id")
+# # 
+# # kegg.id <- kegg.id$KEGG
+# # cas.id <- cas.id$CAS
+# # hmdb.id <-hmdb.id$KEGG
+# # hmdb.id <- as.character(hmdb.id)
+# # 
+# # cas.id[which(cas.id == "")] <- NA
+# # 
+# # hmdb.id[which(hmdb.id == "")] <- NA
+# # kegg.id[which(kegg.id == "")] <- NA
+# # 
+# # cas.id1 <- data.frame(spectra.info$CAS.ID, cas.id, stringsAsFactors = FALSE)
+# # 
+# # cas.id2 <- apply(cas.id1, 1, function(x){
+# #   if(!is.na(x[1])) return(x[1])
+# #   if(all(is.na(x))) return(NA)
+# #   if(is.na(x[1]) & !is.na(x[2])) return(x[2])
+# # })
+# # 
+# # 
+# # hmdb.id1 <- data.frame(spectra.info$HMDB.ID, hmdb.id, stringsAsFactors = FALSE)
+# # 
+# # hmdb.id2 <- apply(hmdb.id1, 1, function(x){
+# #   if(!is.na(x[1])) return(x[1])
+# #   if(all(is.na(x))) return(NA)
+# #   if(is.na(x[1]) & !is.na(x[2])) return(x[2])
+# # })
+# # 
+# # 
+# # kegg.id1 <- data.frame(spectra.info$KEGG.ID, kegg.id, stringsAsFactors = FALSE)
+# # 
+# # kegg.id2 <- apply(kegg.id1, 1, function(x){
+# #   if(!is.na(x[1])) return(x[1])
+# #   if(all(is.na(x))) return(NA)
+# #   if(is.na(x[1]) & !is.na(x[2])) return(x[2])
+# # })
+# # 
+# # 
+# # spectra.info$CAS.ID <- cas.id2
+# # spectra.info$HMDB.ID <- hmdb.id2
+# # spectra.info$KEGG.ID <- kegg.id2
 # 
 # write.csv(spectra.info, "spectra.info.csv", row.names = FALSE)
+# spectra.info <- read.csv("spectra.info.csv", stringsAsFactors = FALSE)
+# spectra.info <- spectra.info[which(!is.na(spectra.info$HMDB.ID)), ]
+# spectra.info <- spectra.info[which(spectra.info$HMDB.ID != "0"), ]
+# 
+# library(plyr)
+# 
+# spectra.info2 <- plyr::dlply(.data = spectra.info, .variables = .(HMDB.ID))
+# 
+# 
+# hmdb.id <- unname(unlist(lapply(spectra.info2, function(x){
+#   x$HMDB.ID[1]
+# })))
+# 
+# rt <- unname(unlist(lapply(spectra.info2, function(x){
+#   mean(x$RT)
+# })))
+# 
+# 
+# hmdb.id <- unlist(lapply(hmdb.id, function(x){
+#   x <- stringr::str_split(string = x, pattern = "\\|")[[1]][1]
+#   x <- stringr::str_trim(x, side = "both")
+#   if(nchar(x) == 9){
+#     x <- stringr::str_replace(string = x, pattern = "HMDB", replacement = "HMDB00")
+#   }
+#   
+# }))
+# 
+# 
+# load("HMDb.metabolite.data")
+# smiles <- match(hmdb.id, HMDB.metabolite.data$HMDB.ID) %>%
+#   `[` (HMDB.metabolite.data$SMILES, .)
+# 
+# library(rcdk)
+# 
+# 
+# library(rcdk)
+# # load("HMDB.metabolite.data")
+# hmdb.smiles <- HMDB.metabolite.data$SMILES
+# descNames <- unique(unlist(sapply(get.desc.categories(), get.desc.names)))
+# 
+# 
+# ##1: 1- 30000
+# ##2: 30001 - 50000
+# ##3: 50001 - 70000
+# ##4: 70001 - 90000
+# ##5:90001- 114004
+# 
+# # hmdb.mol5 <- vector(mode = "list", length = length(hmdb.smiles))
+# load("hmdb.mol5")
+# library(rcdk)
+# load("hmdb.smiles")
+# for(i in 110001:114004){
+#   cat(i, " ")
+# temp <- try(parse.smiles(hmdb.smiles[i]))
+# if(class(temp) == "try-error"){
+#   cat('Error\n')
+#   temp <- NA
+# }
+# hmdb.mol5[[i]] <- temp
+# }
+# 
+# save(hmdb.mol5, file = "hmdb.mol5")
+# rm(list = c("hmdb.mol5"))
+# print(1)
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# temp <- try(parse.smiles(hmdb.smiles[1]))
+# temp <- parse.smiles(hmdb.smiles[1])
+# temp <- eval.desc(temp, descNames)
+# 
 # 
 # 
 # setGeneric(name = "rtPrediction",
@@ -252,20 +320,20 @@
 #              sample.int1 <- sample.int[idx]
 #              rm(list = "sample.int")
 #              gc()
-#              
+# 
 #              labid <- tags1$labid
 #              labid <- lapply(labid, function(x) {
 #                strsplit(x, split = ";")[[1]][1]
 #              })
 #              labid <- unlist(labid)
-#              
-#              
+# 
+# 
 #              adduct <- tags1$adduct
 #              adduct <- lapply(adduct, function(x) {
 #                strsplit(x, split = ";")[[1]][1]
 #              })
 #              adduct <- unlist(adduct)
-#              
+# 
 #              ##remove multipe peaks matched one metabolite
 #              dup.id <- unique(labid[duplicated(labid)])
 #              if(length(dup.id) > 0){
@@ -279,25 +347,25 @@
 #                  labid[temp.idx[-which.max(temp.int)]]  <- NA
 #                }
 #              }
-#              
+# 
 #              rt <- tags1$rt
 #              rm(list = "tags1")
 #              gc()
-#              
+# 
 #              data <- data.frame(labid, rt, adduct, stringsAsFactors = FALSE)
 #              data <- data[!is.na(data$labid),,drop = FALSE]
-#              
+# 
 #              ##filter the metabolite who have no MD in inHouse.compound.md
 #              temp.idx <- which(data$labid %in% rownames(inHouse.compound.md))
-#              
+# 
 #              # if(length(temp.idx) == 0) stop("The metabolites from MS2 match have no MD in inHouse.compound.md.\n")
 #              if(length(temp.idx) == 0) stop("No metabolites are identified by MS2 library.\n")
 #              if(length(temp.idx) < 70){
 #                prefer.adduct <- 'all'
 #              }
 #              data <- data[temp.idx,]
-#              
-#              
+# 
+# 
 #              ##filter data using adduct or not
 #              adduct.order <- setdiff(names(sort(table(adduct), decreasing = TRUE)), prefer.adduct)
 #              if (prefer.adduct != 'all') {
@@ -310,9 +378,9 @@
 #                }
 #                data <- data[temp.idx,,drop = FALSE]
 #              }
-#              
+# 
 #              if(nrow(data) <= 5) stop("No or less 5 metabolites are identified.")
-#              
+# 
 #              cat("There are ", nrow(data),
 #                  " metabolites are used for RT prediction.\n", sep = "")
 #              # data <- data[data$adduct == "M+H",]
@@ -333,11 +401,11 @@
 #              # par(new = T)
 #              # pie(1, col = "white", radius = 0.9, border = "white", labels = "")
 #              #----------------------------------------------------------------
-#              
+# 
 #              idx <- match(data$labid, rownames(inHouse.compound.md))
 #              md <- inHouse.compound.md[idx,]
 #              # rm(list = "inHouse.compound.md")
-#              
+# 
 #              ###remove  NA which apper in more than 50% metabolites
 #              remove.idx1 <-
 #                which(apply(md, 2, function(x) {sum(is.na(x)/nrow(md))})>0.5)
@@ -348,19 +416,19 @@
 #              md2 <- t(impute::impute.knn(data = t(md1))[[1]])
 #              rm(list = "md1")
 #              gc()
-#              
+# 
 #              #remove MD which are same in all metaboites
 #              remove.idx2 <- which(apply(md2, 2, sd) == 0)
 #              md3 <- md2[,-remove.idx2]
 #              rm(list = c("md2"))
 #              gc()
-#              
+# 
 #              ##construct RF model
 #              train.y <- data$rt
 #              train.x <- md3
 #              rm(list = c('data', 'md3'))
 #              gc()
-#              
+# 
 #              if(use.default.md){
 #                switch(column,
 #                       "hilic" = {
@@ -390,12 +458,12 @@
 #                                                                                progressbar = FALSE),
 #                                              x = train.x,
 #                                              y = train.y)
-#                
+# 
 #                md.name <- list()
 #                for(i in 1:length(imp)){
 #                  md.name[[i]] <- names(sort(imp[[i]][,1], decreasing = TRUE)[1:5])
 #                }
-#                
+# 
 #                md.name <- unlist(md.name)
 #                md.name <- table(md.name)
 #                md.name <- sort(md.name)
@@ -406,12 +474,12 @@
 #                save(marker.name, file = "marker.name", compress = "xz")
 #                save(md.name, file = "md.name", compress = "xz")
 #              }
-#              
-#              
-#              
-#              
+# 
+# 
+# 
+# 
 #              idx <- match(marker.name, colnames(train.x))
-#              
+# 
 #              idx <- idx[!is.na(idx)]
 #              if(length(idx) == 0){
 #                stop("Your markers are not in MD data.\n")
@@ -419,7 +487,7 @@
 #              train.x1 <- train.x[,idx]
 #              rm(list = c("train.x"))
 #              gc()
-#              
+# 
 #              para <- NULL
 #              ntree1 <- seq(300,1000,by = 200)
 #              mtry1 <- seq(1,length(marker.name),by = 1)
@@ -451,7 +519,7 @@
 #                                                   mtry = mtry,
 #                                                   replace = TRUE,
 #                                                   importance = TRUE, proximity = TRUE)
-#              
+# 
 #              rm(list = c("train.x1"))
 #              gc()
 #              ##predict RT in inhouse database
@@ -460,7 +528,7 @@
 #              gc()
 #              test.x <- test.x[,match(marker.name, colnames(test.x))]
 #              test.x <- as.data.frame(test.x)
-#              
+# 
 #              inHouse.compound.rt <- rep(NA, nrow(test.x))
 #              names(inHouse.compound.rt) <- rownames(test.x)
 #              ##impute NA in test.x
@@ -478,7 +546,7 @@
 #              attribute[is.na(attribute)] <- "Median"
 #              inHouse.rt <- data.frame(inHouse.compound.rt, attribute, stringsAsFactors = FALSE)
 #              colnames(inHouse.rt)[1] <- "RT"
-#              
+# 
 #              ##cross validation
 #              ##predict RT in KEGG database
 #              test.x <- kegg.compound.md
@@ -486,7 +554,7 @@
 #              gc()
 #              test.x <- test.x[,match(marker.name, colnames(test.x))]
 #              test.x <- as.data.frame(test.x)
-#              
+# 
 #              kegg.compound.rt <- rep(NA, nrow(test.x))
 #              names(kegg.compound.rt) <- rownames(test.x)
 #              ##impute NA in text.x
@@ -506,7 +574,7 @@
 #              attribute[is.na(attribute)] <- "Median"
 #              kegg.rt <- data.frame(kegg.compound.rt, attribute, stringsAsFactors = FALSE)
 #              colnames(kegg.rt)[1] <- "RT"
-#              
+# 
 #              rt <- list(inHouse.rt, kegg.rt)
 #              names(rt) <- c("inHouse.rt", "KEGG.rt")
 #              rt <- rt

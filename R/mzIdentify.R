@@ -30,6 +30,10 @@ setGeneric(name = "mzIdentify",
                stop("No database is provided.\n")
              }
              
+             if(class(database) != "data.frame"){
+               stop("The database must be HMDB.metabolite.data provided.\n")
+             }
+             
              ##parameter specification
              polarity <- match.arg(polarity)
              column <- match.arg(column)

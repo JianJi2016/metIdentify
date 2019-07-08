@@ -37,3 +37,11 @@
 #' \email{shenxt1990@@163.com}
 #' @format A databaseClass object.
 "msDatabase_rplc0.0.1"
+
+##------------------------------------------------------------------------------
+#' @title msDatabase_hilic0.0.1
+#' @description Michael Snyder lab RPLC database
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @format A databaseClass object.
+"msDatabase_hilic0.0.1"

@@ -243,9 +243,9 @@ databaseConstruction <- function(path = ".",
   rm(list = "metabolite.info")
   
   msDatabase0.0.1 <- new(Class = "databaseClass", 
-                           database.info = database.info,
-                           spectra.info = spectra.info,
-                           spectra.data = Spectra)
+                         database.info = database.info,
+                         spectra.info = spectra.info,
+                         spectra.data = Spectra)
   
   # save(msDatabase0.0.1, file = file.path(path, 'msDatabase0.0.1'), compress = "xz")
   return(msDatabase0.0.1)

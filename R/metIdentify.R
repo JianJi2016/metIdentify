@@ -59,6 +59,7 @@
              if(missing(database)){
                stop("No database is provided.\n")
              }
+             
 
              ##parameter specification
              polarity <- match.arg(polarity)
@@ -82,6 +83,9 @@
              database.name <- database
              load(file.path(path, database.name))
              database <- get(database.name)
+             if(class(database) != "metIdentifyClass"){
+               stop("database must be metIdentifyClass object\n")
+             }
              
              ce.list.pos <- unique(unlist(lapply(database@spectra.data$Spectra.positive, names)))
              ce.list.neg <- unique(unlist(lapply(database@spectra.data$Spectra.negative, names)))
@@ -326,15 +330,15 @@
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.1.4 (20190628)
+Version 0.1.5 (20190703)
 --------------
-o Add help document.")
+o Add a metIdentify4all function, so now we can identify metabolite with mutiple databases at the same time.")
 }
 
 packageStartupMessage("metIdentify,
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.1.4 (20190628)
+Version 0.1.5 (20190703)
 --------------
-o Add help document.")
+o Add a metIdentify4all function, so now we can identify metabolite with mutiple databases at the same time.")

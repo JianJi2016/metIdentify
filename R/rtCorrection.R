@@ -466,12 +466,12 @@
 # save(msDatabase_hilic0.0.1, file = "msDatabase_hilic0.0.1")
 
 
-#' @title metIdentify
-#' @description Identify peaks based on MS/MS database.
+#' @title rtCor4database
+#' @description Correct RTs of metabolites in database using internal standard list.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param experiment.is.table Experiment internal standard table.
-#' @param database.is.table Database internal standard table
+#' @param database.is.table Database internal standard table.
 #' @param database Database, must be datasetClass object.
 #' @param method polyline or loess.
 #' @param poly A numeric vector.
@@ -521,7 +521,6 @@ setGeneric(name = "rtCor",
              path = ".",
              return.predicted.rt = TRUE
            ){
-             # browser()
              # dir.create(path)
              method <- match.arg(method)
              

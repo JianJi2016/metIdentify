@@ -40,13 +40,25 @@
     <loc>https://jaspershen.github.io/metIdentify//reference/metIdentify.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/metIdentify4all.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/metIdentifyParam.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/ms2plot.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/msDatabase_hilic0.0.1.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/msDatabase_rplc0.0.1.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/mzIdentify.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metIdentify//reference/mzIdentifyParam.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metIdentify//reference/readMGF.html</loc>
