@@ -30,10 +30,6 @@ setGeneric(name = "mzIdentify",
                stop("No database is provided.\n")
              }
              
-             if(class(database) != "data.frame"){
-               stop("The database must be HMDB.metabolite.data provided.\n")
-             }
-             
              ##parameter specification
              polarity <- match.arg(polarity)
              column <- match.arg(column)
@@ -52,7 +48,9 @@ setGeneric(name = "mzIdentify",
              database.name <- database
              load(file.path(path, database.name))
              database <- get(database.name)
-             
+             if(class(database) != "data.frame"){
+               stop("The database must be HMDB.metabolite.data provided.\n")
+             }
              #------------------------------------------------------------------
              ##load adduct table
              if(polarity == "positive" & column == "hilic"){
