@@ -29,3 +29,7 @@ Please see the `Get started` page to get the instruction of `metIdentify`.
 
 If you have any quesitions about `metIdentify`, please don't hesitate to email me (shenxt@stanford.edu). 
 
+## Citation
+
+We are preparing our manuscript now, so if you use metIdentify for you project and work, please cite my github site. And after my manuscript is online in preprint website, you can cite it with DOI we provided. Thanks very much!
+

@@ -1,27 +1,22 @@
 ---
-title: "metIdentify version0.1.4"
-author: |-
-      
-      School of Medicine, Stanford University
-      
-      Xiaotao Shen(http://shenxt.sxl.cn/)
-date: '`r Sys.Date()`'
+title: "metIdentify version0.1.5"
+author:
+- name: Xiaotao Shen (https://www.shenxt.info/)
+- affiliation: School of Medicine, Stanford University
+  name: Si Wu
+  url: http://shenxt.info/
+date: "`r Sys.Date()`"
 output:
-  prettydoc::html_pretty:
-    highlight: github
-    theme: leonids
-  pdf_document:
-    toc: yes
   html_document:
     df_print: paged
-    toc: yes
-vignette: |
-  %\VignetteIndexEntry{Vignette Title} 
-  %\VignetteEngine{knitr::rmarkdown} 
-  %\VignetteEncoding{UTF-8}
+    toc: no
+  pdf_document:
+    toc: no
+vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%\\VignetteEngine{knitr::rmarkdown}
+  \n"
 ---
 
-```{r, include = FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -31,7 +26,7 @@ knitr::opts_chunk$set(
 ## **Introduction & Installation**
 ******************************************
 
-*metIdentify* is a R package which can be used for metabolite identification based on in-house and public database.
+*metIdentify* is a R package which can be used for database construction, and metabolite identification based on in-house and public database.
 
 ![](../man/figures/workflow_metIdentify.png)
 
@@ -49,7 +44,7 @@ devtools::install_github("jaspershen/tinyTools")
 ## **Database construction**
 ******************************************
 
-If you have in-house standards which have been acquired with MS spectra data, then you can construct the in-house MS2 spectra databases using `metIdentify` package. 
+If you have in-house standards which have been acquired with MS2 spectra data, then you can construct the in-house MS2 spectra databases using `metIdentify` package. 
 
 ### **Data preparation**
 
@@ -61,11 +56,11 @@ Firstly, please transform your raw standard MS data (positive and negative modes
 
 Secondly, please organize your standard information as a table, and output as a csv or xlsx format. The format of stanford information can refer to our demo data in `demoData` package. 
 
-From column 1 to 11, the columns are "Lab.ID", "mz", "RT", "CAS.ID", "HMDB.ID", "KEGG.ID", "Formula", "mz.pos", "mz.neg", "Submitter", respectively. It it OK if you have another information for the standards. Like the demo data shows, there are other additional information, namely "Family", "Sub.pathway" and "Note".
+From column 1 to 11, the columns are "Lab.ID", "mz", "RT", "CAS.ID", "HMDB.ID", "KEGG.ID", "Formula", "mz.pos", "mz.neg", "Submitter", respectively. It is OK if you have another information for the standards. Like the demo data shows, there are other additional information, namely "Family", "Sub.pathway" and "Note".
 
 - mz: Accurate mass of compound.
 
-- RT: Retention time, second.
+- RT: Retention time, unit is second.
 
 - mz.pos: Mass to change ratio of compound in positive mode, for example, M+H.
 
@@ -87,7 +82,7 @@ We use the demo data in `demoData` package to show how to use `metIdentify`. Ple
 devtools::install_github("jaspershen/demoData")
 ```
 
-```{r,eval=TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = FALSE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 library(demoData)
 library(metIdentify)
 path <- system.file("database_construction", package = "demoData")
@@ -111,9 +106,12 @@ The arguments of `databaseConstruction` can be found using `?databaseConstructio
 
 test.database is a `databaseClass` object, you can print it to see its information.
 
-```{r,eval=TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = FALSE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 test.database
 ```
+
+> Note:
+`test.database` is only a demo database (metIdentifyClass). We will don't use it for next metabolite identification.
 
 ## **Retention time correction**
 ******************************************
@@ -140,6 +138,10 @@ test.database2 <- rtCor4database(experiment.is.table = "experiment.is.table.xlsx
 
 The `database` should be the database (databaseClass object) which you want to correct RTs.
 
+> Note:
+`test.database2` is only a demo database (metIdentifyClass). We will don't use it for next metabolite identification.
+
+
 ## **Metabolite identification**
 ******************************************
 
@@ -147,11 +149,11 @@ The `database` should be the database (databaseClass object) which you want to c
 
 #### MS1 data preparation
 
-The peak table must contain "name" (peak name), "mz" (mass to charge ratio) and "rt" (retention time, second). It can be from any data processing software (XCMS, MS-DIAL and so on).
+The peak table must contain "name" (peak name), "mz" (mass to charge ratio) and "rt" (retention time, unit is second). It can be from any data processing software (XCMS, MS-DIAL and so on).
 
 #### MS2 data preparation
 
-The raw MS2 data from DDA or DIA should be transfered to msp, msp or mzXML format files. You can use [ProteoWizard](http://proteowizard.sourceforge.net/).
+The raw MS2 data from DDA or DIA should be transfered to msp, mgf or mzXML format files. You can use [ProteoWizard](http://proteowizard.sourceforge.net/) software.
 
 
 #### Data organization
@@ -164,8 +166,7 @@ Place the MS1 peak table, MS2 data and database which you want to use in one fol
 
 We can use the demo data from `demoData` package to show how to use it.
 
-
-```{r, eval=TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 library(metIdentify)
 path <- system.file("ms2_identification_demo_data1", package = "demoData")
 file.copy(from = path, to = ".", overwrite = TRUE, recursive = TRUE)
@@ -231,22 +232,24 @@ $$Dot\;product = \dfrac{\sum(wA_{act.}wA_{lib})^2}{\sum(wA_{act.})^2\sum(wA_{lib
 
 `result` is metIdentifyClass object. You can print it out to see the identificaiton information.
 
-```{r, eval=TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 result
 ```
 
+> In-house database
+The in-house database in our lab were provided, with RPLC and HILIC mode RT information. They were acquired using Thermo Fisher QE-plus. However, the LC system may be different with your experiments, so if you want to use our in-house database for metabolite identification, please set `rt.match.tol` as 100000000(no limitation). The in-house database can be downloaded in my [github](https://github.com/jaspershen/metIdentify/tree/master/data).
+
 You can get processsing parameters from it.
 
-```{r, eval=TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 parameters <- getParams(object = result)
 tibble::as.tibble(parameters)
 ```
 
-You can get the identification table from it.
+You can also get the identification table from it.
 
-```{r, eval=TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 identification.table1 <- getIdentificationTable(object = result)
-
 ```
 
 
@@ -264,7 +267,7 @@ You can also use `ms2plot` function to output the MS2 specra match plot for one,
 
 > Output one MS2 spectra match plot.
 
-```{r, eval=TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 ##which peaks have identification
 peak.name <- whichHasIden(object = result)
 head(peak.name)
@@ -275,7 +278,7 @@ ms2.plot1
 
 > You can also output interactive MS2 spectra match plot by setting `interaction.plot` as TRUE.
 
-```{r, eval=TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 ##which peaks have identification
 ms2.plot2 <- ms2plot(object = result, database = msDatabase_rplc0.0.1, 
                      which.peak = peak.name[1,1], interaction.plot = TRUE)
@@ -291,6 +294,7 @@ ms2plot(object = result, database = msDatabase_rplc0.0.1,
 
 Then all the MS2 spectra match plots will be output in the "inhouse" folder.
 
+
 ## **Result integration and output**
 **************************************************
 
@@ -304,37 +308,52 @@ You can also use other public database for metabolite identificaiton based on MS
 
 - Orbitrap database from MassBank (orbitrapDatabase0.0.1)
 
-Here, we will use orbitrap database for metabolite identification.
+Here, we will use orbitrap database and HMDB database for metabolite identification. The `metIdentify4all` function can identify metabolites with several databases.
 
-```{r, eval=FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+### Prepare demo data
+
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 library(demoData)
 library(metIdentify)
 path <- system.file("ms2_database", package = "demoData")
-file.copy(from = file.path(path, "orbitrapDatabase0.0.1"), 
+file.copy(from = file.path(path, c("orbitrapDatabase0.0.1", "hmdbDatabase0.0.1")), 
           to = new.path, overwrite = TRUE, recursive = TRUE)
 load(file.path(new.path, "orbitrapDatabase0.0.1"))
+load(file.path(new.path, "hmdbDatabase0.0.1"))
+```
 
-result2 <- metIdentify(ms1.data = "ms1.peak.table.csv", ##csv format
-           ms2.data = ms2.data,##only msp and mgf and mz(X)ML are supported
-           ms1.ms2.match.mz.tol = 25,
-           ms1.ms2.match.rt.tol = 10,
-           ms1.match.ppm = 25,
-           ms2.match.tol = 0.4,
-           fraction.weight = 0.3,
-           dp.forward.weight = 0.6,
-           dp.reverse.weight = 0.1,
-           rt.match.tol = 60,
-           polarity = "positive", 
-           ce = "all",
-           column = "rp",
-           ms1.match.weight = 0.25,
-           rt.match.weight = 0.25,
-           ms2.match.weight = 0.5,
-           path = new.path,
-           total.score.tol = 0,
-           candidate.num = 3,
-           database = "orbitrapDatabase0.0.1",
-           threads = 3)
+### Prepare parameter list for each database
+
+We can use `metIdentifyParam` and `mzIdentifyParam` to get parameter list for different databases.
+
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+parameter.list1 <- metIdentifyParam(polarity = "positive", 
+                                    candidate.num = 3, 
+                                    column = "rp", ce = "all", 
+                                    database = "orbitrapDatabase0.0.1", 
+                                    threads = 3)
+
+parameter.list2 <- metIdentifyParam(polarity = "positive", 
+                                    candidate.num = 3, 
+                                    column = "rp", ce = "all", 
+                                    database = "hmdbDatabase0.0.1", 
+                                    threads = 3)
+
+```
+
+### Run `metIdentify4all` function
+
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+result2 <- metIdentify4all(ms1.data = "ms1.peak.table.csv", ##csv format  
+                           ms2.data = ms2.data, parameter.list = c(parameter.list1, parameter.list2), 
+                           path = new.path)
+```
+
+It will return a list of objects of identification results. 
+
+```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+result2[[1]]
+result2[[2]]
 ```
 
 We can also identify metabolites only m/z match, which is level 3 identification according to MSI. We provid the HMDB metabolite database in the [`demoData` package](https://github.com/jaspershen/demoData/tree/master/inst/hmdb_metabolite_database).
@@ -389,6 +408,12 @@ identification.table <- rbind(identification.table1,
 
 write.csv(identification.table, file = file.path(new.path, "identification.table.csv"), row.names = FALSE)
 ```
+
+> Note:
+Of course, you can also use `metIdentify4all` function to run all the databases(in-house, publica database and HMDB metabolite database) in one run like we have shown above. What should be noticed is that the parameter list for HMDB.metabolite.data must use `mzIdentifyParam` function to construct.
+
+
+
 
 
 

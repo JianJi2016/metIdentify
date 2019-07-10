@@ -327,7 +327,7 @@
 .onAttach <- function(libname, pkgname){
   packageStartupMessage("metIdentify,
 More information can be found at https://jaspershen.github.io/metIdentify/
-Authors: Xiaotao Shen (shenxt1990@163.com)
+Authors: Xiaotao Shen (shenxt1990@163.com), Si Wu
 Maintainer: Xiaotao Shen.
 Version 0.1.5 (20190703)
 --------------
@@ -336,7 +336,7 @@ o Add a metIdentify4all function, so now we can identify metabolite with mutiple
 
 packageStartupMessage("metIdentify,
 More information can be found at https://jaspershen.github.io/metIdentify/
-Authors: Xiaotao Shen (shenxt1990@163.com)
+Authors: Xiaotao Shen (shenxt1990@163.com), Si Wu
 Maintainer: Xiaotao Shen.
 Version 0.1.5 (20190703)
 --------------
