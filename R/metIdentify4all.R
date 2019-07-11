@@ -132,11 +132,12 @@ setGeneric(name = "metIdentify4all",
                cat("-------------------------------\n")
                new.path <- file.path(path, paste(database.name[i], "Result", sep=  '_'))
                dir.create(new.path)
-               # file.copy(from = file.path(path, ms1.data.name), to = new.path)
-               # file.copy(from = file.path(path, ms2.data.name), to = new.path)
-               # file.copy(from = file.path(path, "ms1.info"), to = new.path)
-               # file.copy(from = file.path(path, "ms2.info"), to = new.path)
-               # file.copy(from = file.path(path, database.name[i]), to = new.path)
+               if(any(dir(new.path) == "result")){
+                 load(file.path(new.path, "result"))
+                 identification.result[[i]] <- result
+                 rm(list = "result")
+                 next()
+               }
                
                if(length(parameter.list[[i]]) < 20){
                  result <- mzIdentify(
@@ -180,7 +181,7 @@ setGeneric(name = "metIdentify4all",
                save(result, file = file.path(new.path, "result"))
                rm(list = "result")
              }
-             return(identification.result)
+             invisible(identification.result)
            })
 
 

@@ -31,6 +31,7 @@
 #' @seealso The example and demo data of this function can be found 
 #' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 
+
     setGeneric(name = "metIdentify",
            def = function(ms1.data, ##csv format
                           ms2.data,##only msp and mgf and mz(X)ML are supported

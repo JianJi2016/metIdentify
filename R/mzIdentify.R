@@ -16,6 +16,8 @@
 #' @seealso The example and demo data of this function can be found 
 #' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
 
+
+
 setGeneric(name = "mzIdentify",
            def = function(ms1.data, ##csv format
                           ms1.match.ppm = 25,
@@ -29,7 +31,6 @@ setGeneric(name = "mzIdentify",
              if(missing(database)){
                stop("No database is provided.\n")
              }
-             
              ##parameter specification
              polarity <- match.arg(polarity)
              column <- match.arg(column)
