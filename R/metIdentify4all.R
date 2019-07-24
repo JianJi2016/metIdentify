@@ -31,7 +31,7 @@ setGeneric(name = "metIdentify4all",
              parameter.list,
              path = "."
            ){
-             
+             threads = parameter.list[[1]]$threads
              ms1.data.name <- ms1.data
              ms2.data.name <- ms2.data
              file <- dir(path)
