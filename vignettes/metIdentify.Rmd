@@ -1,5 +1,5 @@
 ---
-title: "metIdentify version0.1.5"
+title: "metIdentify version0.1.6"
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
 - affiliation: School of Medicine, Stanford University

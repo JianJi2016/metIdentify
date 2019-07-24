@@ -318,7 +318,8 @@
                                   total.score.tol = total.score.tol,
                                   candidate.num = candidate.num,
                                   database = database.name,
-                                  threads = threads)
+                                  threads = threads,
+                                  version = "0.1.6")
              cat("All is done.\n")
              return(return.result)
            })
@@ -330,15 +331,15 @@
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com), Si Wu
 Maintainer: Xiaotao Shen.
-Version 0.1.5 (20190703)
+Version 0.1.6 (20190724)
 --------------
-o Add a metIdentify4all function, so now we can identify metabolite with mutiple databases at the same time.")
+o Add some new functions and fix some bugs.")
 }
 
 packageStartupMessage("metIdentify,
 More information can be found at https://jaspershen.github.io/metIdentify/
 Authors: Xiaotao Shen (shenxt1990@163.com), Si Wu
 Maintainer: Xiaotao Shen.
-Version 0.1.5 (20190703)
+Version 0.1.6 (20190724)
 --------------
-o Add a metIdentify4all function, so now we can identify metabolite with mutiple databases at the same time.")
+o Add some new functions and fix some bugs.")

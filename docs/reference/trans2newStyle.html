@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>whichHasIden — whichHasIden • metIdentify</title>
+<title>trans2newStyle — trans2newStyle • metIdentify</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,9 +43,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="whichHasIden — whichHasIden" />
+<meta property="og:title" content="trans2newStyle — trans2newStyle" />
 
-<meta property="og:description" content="Get the peak names which have identifications." />
+<meta property="og:description" content="Transform old style identification table to new style.." />
 
 <meta property="og:image" content="https://jaspershen.github.io/metIdentify/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -126,31 +126,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>whichHasIden</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metIdentify/blob/master/R/function4metIdentifyClass.R'><code>R/function4metIdentifyClass.R</code></a></small>
-    <div class="hidden name"><code>whichHasIden.Rd</code></div>
+    <h1>trans2newStyle</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metIdentify/blob/master/R/getIdentificationTable.R'><code>R/getIdentificationTable.R</code></a></small>
+    <div class="hidden name"><code>trans2newStyle.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get the peak names which have identifications.</p>
+    <p>Transform old style identification table to new style..</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>whichHasIden</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>trans2newStyle</span>(<span class='no'>identification.table</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>A metIdentifyClass object.</p></td>
+      <th>identification.table</th>
+      <td><p>Identification table from getIdentificationTable or getIdentificationTable2.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Peak names with identifications.</p>
+    <p>A identification table (data.frame).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

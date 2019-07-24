@@ -18,6 +18,10 @@ Version 0.1.5 (20190703)
 --------------
 o Add a metIdentify4all function, so now we can identify metabolite with mutiple databases at the same time.
 
+Version 0.1.6 (20190724)
+--------------
+o Add some new functions and fix some bugs.
+
 
 
 

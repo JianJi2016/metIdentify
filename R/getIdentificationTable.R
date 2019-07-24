@@ -178,3 +178,93 @@ setGeneric(name = "getIdentificationTable",
                return(identification.table)
              }
            })
+
+
+
+
+
+
+
+##------------------------------------------------------------------------------
+#' @title trans2newStyle
+#' @description Transform old style identification table to new style..
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param identification.table Identification table from getIdentificationTable or getIdentificationTable2.
+#' @return A identification table (data.frame).
+#' @export
+#' @seealso The example and demo data of this function can be found 
+#' https://jaspershen.github.io/metIdentify/articles/metIdentify.html
+
+setGeneric(name = "trans2newStyle", 
+           def = function(identification.table){
+             if(all(colnames(identification.table) != "Identification")){
+               return(identification.table)
+             }else{
+               identification <- identification.table$Identification
+               identification <- 
+                 pbapply::pblapply(identification, function(x){
+                   if(is.na(x)){
+                     return(
+                       data.frame("Compound.name" = NA, 
+                                  "CAS.ID" = NA, 
+                                  "HMDB.ID" = NA,
+                                  "KEGG.ID" = NA,
+                                  "Lab.ID" = NA,
+                                  "Adduct" = NA,
+                                  "mz.error" = NA,
+                                  "mz.match.score" = NA,
+                                  "RT.error" = NA,
+                                  "RT.match.score" = NA,
+                                  "CE" = NA,
+                                  "SS" = NA,
+                                  "Total.score" = NA,
+                                  "Database" = NA, 
+                                  stringsAsFactors = FALSE)
+                     )
+                   }else{
+                     x <- stringr::str_split(string = x, pattern = "\\{\\}")[[1]][1]
+                     Compound.name <- stringr::str_split(string = x, pattern = "\\;CAS\\.ID", n = 2)[[1]][1]
+                     require(magrittr)
+                     Compound.name <- Compound.name %>% 
+                       stringr::str_replace(string = ., pattern = "Compound.name\\:", replacement = "")
+                     
+                     x <- stringr::str_split(string = x, pattern = ";")[[1]]
+                     
+                     x <- sapply(c("CAS.ID\\:", "HMDB.ID\\:", "KEGG.ID\\:", "Lab.ID\\:",
+                                   "Adduct\\:", "mz.error\\:", "mz.match.score\\:",
+                                   "RT.error\\:", "RT.match.score\\:",
+                                   "CE\\:", "SS\\:", "Total.score\\:", "Database\\:"), function(y){
+                                     y <- grep(y, x, value = TRUE) %>% 
+                                       stringr::str_replace(string = ., pattern = paste(y,"\\:", sep = ""), 
+                                                            replacement = "")
+                                     if(length(y) == 0){
+                                       return(NA)
+                                     }
+                                     y
+                                     
+                                   })
+                     x <- stringr::str_replace(string = x, 
+                                               pattern = c("CAS.ID\\:", "HMDB.ID\\:", "KEGG.ID\\:", "Lab.ID\\:",
+                                                           "Adduct\\:", "mz.error\\:", "mz.match.score\\:",
+                                                           "RT.error\\:", "RT.match.score\\:",
+                                                           "CE\\:", "SS\\:", "Total.score\\:", "Database\\:"), 
+                                               replacement = "")
+                     x <- matrix(c(Compound.name, x), nrow = 1, byrow = TRUE)
+                     colnames(x) <- c("Compound.name", "CAS.ID", "HMDB.ID", "KEGG.ID", "Lab.ID",
+                                      "Adduct", "mz.error", "mz.match.score",
+                                      "RT.error", "RT.match.score",
+                                      "CE", "SS", "Total.score", "Database")
+                     return(as.data.frame(x, stringsAsFactors = FALSE))
+                   }
+                 })
+               
+               identification <- do.call(rbind, identification)
+               identification.table <- tibble::as_tibble(identification.table)
+               identification.table <- dplyr::select(.data = identification.table, -(Identification))
+               identification.table <- cbind(identification.table, identification)
+               
+               invisible(identification.table)
+               # identification1 <- dplyr::bind_rows(identification)
+             }
+           })

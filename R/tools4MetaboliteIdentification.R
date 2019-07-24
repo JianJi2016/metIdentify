@@ -762,11 +762,20 @@ setGeneric(name = "readMGF",
                info.rt <- unlist(info.rt)
                info.rt <- as.numeric(gsub(pattern = "\\w+=", "", info.rt))
                
-               spec <- mapply(function(x, y){
-                 do.call(rbind, strsplit(x[y], split = " "))
-               },
-               x = mgf.data,
-               y = nl.spec)
+               if(length(mgf.data) == 1){
+                 spec <- mapply(function(x, y){
+                   temp <- do.call(rbind, strsplit(x[y], split = " "))
+                   list(temp)
+                 },
+                 x = mgf.data,
+                 y = nl.spec) 
+               }else{
+                 spec <- mapply(function(x, y){
+                   do.call(rbind, strsplit(x[y], split = " "))
+                 },
+                 x = mgf.data,
+                 y = nl.spec) 
+               }
                
                spec <- lapply(spec, function(x){
                  temp <- cbind(as.numeric(x[,1]),as.numeric(x[,2]))

@@ -1,13 +1,12 @@
 Package: metIdentify
 Type: Package
-Title: Metabolite identification based on MS1 and MS2 spectra.
-Version: 0.1.5
-Date: 2019-07-03
+Title: Metabolite identification based on MS1 and MS2 spectra
+Version: 0.1.6
+Date: 2019-07-24
 Authors@R: c(
     person("Xiaotao", "Shen", , "shenxt1990@163.com", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-9608-9964")
-    ),
-    person("Si", "Wu" , role = c("aut"))
+    )
     )
 Maintainer: Xiaotao Shen<shenxt1990@163.com>
 Description: Metabolite identification using MS1 and MS2 spectra.

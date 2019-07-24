@@ -23,13 +23,19 @@ setClass(Class = "metIdentifyClass",
                         total.score.tol = "numeric",
                         candidate.num = "numeric",
                         database = "character",
-                        threads = "numeric")
+                        threads = "numeric",
+                        version = "character")
 )
 
 
 setMethod(f = "show",
           signature = "metIdentifyClass",
           definition = function(object){
+            version <- try(object@version)
+            if(class(version) != "try-error"){
+            cat("-----------metIdentify version--------\n")
+            cat(object@version, "\n")
+            }
             cat("-----------Identifications------------\n")
             cat("(Use getIdentificationTable to get identification table)\n")
             cat("There are", nrow(object@ms1.data), "peaks\n")
